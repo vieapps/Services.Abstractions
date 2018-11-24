@@ -31,7 +31,7 @@ namespace net.vieapps.Services
 	{
 		public UpdateMessage() : this(null) { }
 
-		public UpdateMessage(BaseMessage message = null) : base()
+		public UpdateMessage(BaseMessage message) : base()
 		{
 			this.Type = message?.Type ?? "";
 			this.Data = message?.Data ?? new JObject();
@@ -58,7 +58,7 @@ namespace net.vieapps.Services
 	{
 		public CommunicateMessage() : this(null, null) { }
 
-		public CommunicateMessage(string serviceName = null, BaseMessage message = null) : base()
+		public CommunicateMessage(string serviceName, BaseMessage message = null) : base()
 		{
 			this.ServiceName = serviceName ?? "";
 			this.Type = message?.Type ?? "";
