@@ -1,20 +1,24 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System;
+using Newtonsoft.Json.Linq;
 namespace net.vieapps.Services
 {
 	/// <summary>
 	/// Presents a message for updating information
 	/// </summary>
-	public interface IServiceMessage
+	[Serializable]
+	public class BaseMessage
 	{
-		/// <summary>
-		/// Gets or sets type of update message
-		/// </summary>
-		string Type { get; set; }
+		public BaseMessage() { }
 
 		/// <summary>
-		/// Gets or sets data of update message
+		/// Gets or sets type of the message
 		/// </summary>
-		JToken Data { get; set; }
+		public string Type { get; set; } = "";
+
+		/// <summary>
+		/// Gets or sets data of the message
+		/// </summary>
+		public JToken Data { get; set; } = new JObject();
 	}
 
 	//  --------------------------------------------------------------------------------------------
@@ -22,17 +26,26 @@ namespace net.vieapps.Services
 	/// <summary>
 	/// Presents a message for updating via RTU (Real-Time Update)
 	/// </summary>
-	public interface IUpdateMessage : IServiceMessage
+	[Serializable]
+	public class UpdateMessage : BaseMessage
 	{
+		public UpdateMessage() : this(null) { }
+
+		public UpdateMessage(BaseMessage message = null) : base()
+		{
+			this.Type = message?.Type ?? "";
+			this.Data = message?.Data ?? new JObject();
+		}
+
 		/// <summary>
 		/// Gets or sets identity of device that received the message
 		/// </summary>
-		string DeviceID { get; set; }
+		public string DeviceID { get; set; } = "";
 
 		/// <summary>
 		/// Gets or sets the identity of excluded devices
 		/// </summary>
-		string ExcludedDeviceID { get; set; }
+		public string ExcludedDeviceID { get; set; } = "";
 	}
 
 	//  --------------------------------------------------------------------------------------------
@@ -40,11 +53,21 @@ namespace net.vieapps.Services
 	/// <summary>
 	/// Presents a message for communicating between services
 	/// </summary>
-	public interface ICommunicateMessage : IServiceMessage
+	[Serializable]
+	public class CommunicateMessage : BaseMessage
 	{
+		public CommunicateMessage() : this(null, null) { }
+
+		public CommunicateMessage(string serviceName = null, BaseMessage message = null) : base()
+		{
+			this.ServiceName = serviceName ?? "";
+			this.Type = message?.Type ?? "";
+			this.Data = message?.Data ?? new JObject();
+		}
+
 		/// <summary>
 		/// Gets or sets name of the service that received and processed the message
 		/// </summary>
-		string ServiceName { get; set; }
+		public string ServiceName { get; set; }
 	}
 }

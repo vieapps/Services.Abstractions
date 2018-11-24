@@ -27,6 +27,6 @@ namespace net.vieapps.Services
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("net.vieapps.services.{0}")]
-		Task<JToken> ProcessRequestAsync(IRequestInfo requestInfo, CancellationToken cancellationToken = default(CancellationToken));
+		Task<JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default(CancellationToken));
 	}
 }

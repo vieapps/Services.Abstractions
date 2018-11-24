@@ -1,59 +1,94 @@
-﻿using net.vieapps.Components.Security;
+﻿#region Related components
+using System;
+using System.Collections.Generic;
+
+using net.vieapps.Components.Utility;
+using net.vieapps.Components.Security;
+#endregion
+
 namespace net.vieapps.Services
 {
 	/// <summary>
 	/// Presents a working session
 	/// </summary>
-	public interface ISession
+	[Serializable]
+	public class Session
 	{
+		/// <summary>
+		/// Initializes a new session
+		/// </summary>
+		public Session() : this(null) { }
+
+		/// <summary>
+		/// Initializes a new session
+		/// </summary>
+		/// <param name="session"></param>
+		public Session(Session session)
+		{
+			this.SessionID = session?.SessionID ?? "";
+			this.DeviceID = session?.DeviceID ?? "";
+			this.IP = session?.IP ?? "";
+			this.AppName = session?.AppName ?? "";
+			this.AppPlatform = session?.AppPlatform ?? "";
+			this.AppAgent = session?.AppAgent ?? "";
+			this.AppOrigin = session?.AppOrigin ?? "";
+			this.AppMode = session?.AppMode ?? "Client";
+			this.User = session?.User ?? new User("", this.SessionID, new List<string>(), new List<Privilege>());
+			this.Verification = session != null ? session.Verification : false;
+		}
+
+		#region Properties
 		/// <summary>
 		/// Gets or sets the identity of session
 		/// </summary>
-		string SessionID { get; set; }
+		public string SessionID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the device's identity (Device UUID) that associates with this session
 		/// </summary>
-		string DeviceID { get; set; }
+		public string DeviceID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the IP address of client's device
 		/// </summary>
-		string IP { get; set; }
+		public string IP { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the the app that associates with this session
 		/// </summary>
-		string AppName { get; set; }
+		public string AppName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the platform of the app that associates with this session
 		/// </summary>
-		string AppPlatform { get; set; }
+		public string AppPlatform { get; set; }
 
 		/// <summary>
 		/// Gets or sets the agent info (agent string) of the app that associates with this session
 		/// </summary>
-		string AppAgent { get; set; }
+		public string AppAgent { get; set; }
 
 		/// <summary>
 		/// Gets or sets the origin info (origin or refer url) of the app that associates with this session
 		/// </summary>
-		string AppOrigin { get; set; }
+		public string AppOrigin { get; set; }
 
 		/// <summary>
 		/// Gets or sets the mode of the app that associates with this session
 		/// </summary>
-		string AppMode { get; set; }
+		public string AppMode { get; set; }
 
 		/// <summary>
 		/// Gets or sets the information of user who performs the action in the sesssion
 		/// </summary>
-		User User { get; set; }
+		public User User { get; set; }
 
 		/// <summary>
 		/// Gets or sets two-factors verification status
 		/// </summary>
-		bool Verification { get; set; }
+		public bool Verification { get; set; }
+		#endregion
+
 	}
+
 }
