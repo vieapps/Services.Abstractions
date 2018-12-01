@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using net.vieapps.Components.Utility;
-using net.vieapps.Components.Security;
 namespace net.vieapps.Services
 {
 	/// <summary>
@@ -36,7 +32,7 @@ namespace net.vieapps.Services
 		/// <param name="body"></param>
 		/// <param name="extra"></param>
 		/// <param name="correlationID"></param>
-		public RequestInfo(Session session = null, string serviceName = null, string objectName = null, string verb = null, Dictionary<string, string> query = null, Dictionary<string, string> header = null, string body = null, Dictionary<string, string> extra = null, string correlationID = null)
+		public RequestInfo(Session session, string serviceName, string objectName = null, string verb = null, Dictionary<string, string> query = null, Dictionary<string, string> header = null, string body = null, Dictionary<string, string> extra = null, string correlationID = null)
 		{
 			this.Session = new Session(session);
 			this.ServiceName = string.IsNullOrWhiteSpace(serviceName) ? "unknown" : serviceName.Trim().ToLower();
@@ -96,112 +92,5 @@ namespace net.vieapps.Services
 		public string CorrelationID { get; set; }
 		#endregion
 
-		#region Methods: get body & request
-		/// <summary>
-		/// Gets the request body in JSON
-		/// </summary>
-		/// <returns></returns>
-		public JToken GetBodyJson() => string.IsNullOrWhiteSpace(this.Body) ? new JObject() : this.Body.ToJson();
-
-		/// <summary>
-		/// Gets the request body in dynamic object (Expando)
-		/// </summary>
-		/// <returns></returns>
-		public ExpandoObject GetBodyExpando() => string.IsNullOrWhiteSpace(this.Body) ? new ExpandoObject() : this.Body.ToExpandoObject();
-
-		/// <summary>
-		/// Gets the value of the 'x-request' parameter of the query (in Base64Url) and converts to JSON
-		/// </summary>
-		/// <returns></returns>
-		public JToken GetRequestJson() => (this.Query.ContainsKey("x-request") ? this.Query["x-request"].Url64Decode() : "{}").ToJson();
-
-		/// <summary>
-		/// Gets the value of the 'x-request' parameter of the query (in Base64Url) and converts to Expando
-		/// </summary>
-		/// <returns></returns>
-		public ExpandoObject GetRequestExpando() => this.Query.ContainsKey("x-request") ? this.Query["x-request"].Url64Decode().ToExpandoObject() : new ExpandoObject();
-		#endregion
-
-		#region Methods: get parameters
-		/// <summary>
-		/// Gets the parameter from the header
-		/// </summary>
-		/// <param name="name">The string that presents name of parameter want to get</param>
-		/// <returns></returns>
-		public string GetHeaderParameter(string name) => this.Header != null && !string.IsNullOrWhiteSpace(name) && this.Header.ContainsKey(name.ToLower()) ? this.Header[name.ToLower()] : null;
-
-		/// <summary>
-		/// Gets the parameter from the query
-		/// </summary>
-		/// <param name="name">The string that presents name of parameter want to get</param>
-		/// <returns></returns>
-		public string GetQueryParameter(string name) => this.Query != null && !string.IsNullOrWhiteSpace(name) && this.Query.ContainsKey(name.ToLower()) ? this.Query[name.ToLower()] : null;
-
-		/// <summary>
-		/// Gets the parameter with two steps: first from header, then second step is from query if header has no value
-		/// </summary>
-		/// <param name="name">The string that presents name of parameter want to get</param>
-		/// <returns></returns>
-		public string GetParameter(string name) => this.GetHeaderParameter(name) ?? this.GetQueryParameter(name);
-
-		/// <summary>
-		/// Gets the identity of the device that send this request
-		/// </summary>
-		/// <returns></returns>
-		public string GetDeviceID() => this.Session != null && !string.IsNullOrWhiteSpace(this.Session.DeviceID) ? this.Session.DeviceID : this.GetParameter("x-device-id");
-
-		/// <summary>
-		/// Gets the name of the app that send this request
-		/// </summary>
-		/// <returns></returns>
-		public string GetAppName() => this.Session != null && !string.IsNullOrWhiteSpace(this.Session.AppName) ? this.Session.AppName : this.GetParameter("x-app-name");
-
-		/// <summary>
-		/// Gets the platform of the app that send this request
-		/// </summary>
-		/// <returns></returns>
-		public string GetAppPlatform() => this.Session != null && !string.IsNullOrWhiteSpace(this.Session.AppPlatform) ? this.Session.AppPlatform : this.GetParameter("x-app-platform");
-
-		/// <summary>
-		/// Gets the object identity (from the parameter named 'object-identity' of the query)
-		/// </summary>
-		/// <param name="requireUUID">true to require object identity is valid UUID</param>
-		/// <returns></returns>
-		public string GetObjectIdentity(bool requireUUID = false)
-		{
-			var objectIdentity = this.GetQueryParameter("object-identity");
-			return !string.IsNullOrWhiteSpace(objectIdentity)
-				? !requireUUID
-					? objectIdentity
-					: objectIdentity.IsValidUUID()
-						? objectIdentity
-						: null
-				: null;
-		}
-		#endregion
-
-		/// <summary>
-		/// Gets the full URI of this request
-		/// </summary>
-		[JsonIgnore]
-		public string URI
-		{
-			get
-			{
-				var uri = "/" + this.ServiceName;
-				if (!string.IsNullOrWhiteSpace(this.ObjectName))
-				{
-					uri += "/" + this.ObjectName;
-					var id = this.GetObjectIdentity();
-					if (!string.IsNullOrWhiteSpace(id))
-					{
-						uri += "/" + id;
-						if (!id.IsValidUUID() && this.Query != null && this.Query.TryGetValue("id", out string idValue))
-							uri += "/" + idValue;
-					}
-				}
-				return uri.ToLower();
-			}
-		}
 	}
 }

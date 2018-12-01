@@ -1,16 +1,14 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using WampSharp.V2.Rpc;
 using Newtonsoft.Json.Linq;
-using Microsoft.Extensions.Logging;
 using net.vieapps.Components.Security;
 namespace net.vieapps.Services
 {
 	/// <summary>
 	/// Presents a business service
 	/// </summary>
-	public interface IService : IDisposable
+	public interface IService : System.IDisposable
 	{
 		/// <summary>
 		/// Gets the name of this service (for working with WAMP)
@@ -25,7 +23,7 @@ namespace net.vieapps.Services
 		/// <summary>
 		/// Gets the logger
 		/// </summary>
-		ILogger Logger { get; }
+		Microsoft.Extensions.Logging.ILogger Logger { get; }
 
 		/// <summary>
 		/// Process the request of this service

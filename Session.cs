@@ -1,11 +1,6 @@
-﻿#region Related components
-using System;
+﻿using System;
 using System.Collections.Generic;
-
-using net.vieapps.Components.Utility;
 using net.vieapps.Components.Security;
-#endregion
-
 namespace net.vieapps.Services
 {
 	/// <summary>
