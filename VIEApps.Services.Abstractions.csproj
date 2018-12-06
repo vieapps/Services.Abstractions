@@ -8,7 +8,7 @@
 		<Version>10.2.1812.3</Version>
 		<AssemblyVersion>10.2.1812.3</AssemblyVersion>
 		<FileVersion>10.2.1812.3</FileVersion>
-		<InformationalVersion>v10.2.netstandard-2+rev:2018.12.04-lstcmp</InformationalVersion>
+		<InformationalVersion>v10.2.netstandard-2+rev:2018.12.06-latest.components</InformationalVersion>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
