@@ -4,8 +4,9 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<RootNamespace>net.vieapps.Services</RootNamespace>
 		<AssemblyName>VIEApps.Services.Abstractions</AssemblyName>
+		<WarningLevel>3</WarningLevel>
+		<DocumentationFile>bin\$(Configuration)\netstandard2.0\VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<AssemblyTitle>VIEApps NGX Abstractions</AssemblyTitle>
-		<Version>10.2.1812.3</Version>
 		<AssemblyVersion>10.2.1812.3</AssemblyVersion>
 		<FileVersion>10.2.1812.3</FileVersion>
 		<InformationalVersion>v10.2.netstandard-2+rev:2018.12.06-latest.components</InformationalVersion>
@@ -16,6 +17,7 @@
 		<Product>VIEApps NGX</Product>
 		<Copyright>© 2018 VIEApps.net</Copyright>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<Version>10.2.1812.3</Version>
 		<PackageId>VIEApps.Services.Abstractions</PackageId>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
 		<PackageReleaseNotes>Upgrade to latest components</PackageReleaseNotes>
@@ -23,16 +25,6 @@
 		<PackageProjectUrl>https://github.com/vieapps/Services.Abstractions</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<WarningLevel>3</WarningLevel>
-		<DocumentationFile>bin\Debug\netstandard2.0\VIEApps.Services.Abstractions.xml</DocumentationFile>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<WarningLevel>3</WarningLevel>
-		<DocumentationFile>bin\Release\netstandard2.0\VIEApps.Services.Abstractions.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
