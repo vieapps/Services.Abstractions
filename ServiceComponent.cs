@@ -7,17 +7,17 @@ namespace net.vieapps.Services
 	public interface IServiceComponent : IDisposable
 	{
 		/// <summary>
-		/// Gets the name of this service (for working with WAMP protocol)
+		/// Gets the name of this service (for working with WAMP router)
 		/// </summary>
 		string ServiceName { get; }
 
 		/// <summary>
-		/// Gets the URI of this service (with full namespace - for working with WAMP protocol)
+		/// Gets the URI of this service (with full namespace - for working with WAMP router)
 		/// </summary>
 		string ServiceURI { get; }
 
 		/// <summary>
-		/// Gets or sets the logger
+		/// Gets or Sets the logger
 		/// </summary>
 		Microsoft.Extensions.Logging.ILogger Logger { get; set; }
 

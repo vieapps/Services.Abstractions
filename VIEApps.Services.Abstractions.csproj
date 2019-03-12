@@ -7,18 +7,19 @@
 		<WarningLevel>3</WarningLevel>
 		<DocumentationFile>bin\$(Configuration)\netstandard2.0\VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<AssemblyTitle>VIEApps NGX Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.2.1812.3</AssemblyVersion>
-		<FileVersion>10.2.1812.3</FileVersion>
-		<InformationalVersion>v10.2.netstandard-2+rev:2018.12.06-latest.components</InformationalVersion>
+		<AssemblyVersion>10.2.1903.2</AssemblyVersion>
+		<FileVersion>10.2.1903.2</FileVersion>
+		<InformationalVersion>v10.2.netstandard-2+rev:2019.03.06-latest.components</InformationalVersion>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageId>VIEApps.Services.Abstractions</PackageId>
+		<Version>10.2.1903.2</Version>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
 		<Company>VIEApps.net</Company>
 		<Product>VIEApps NGX</Product>
-		<Copyright>© 2018 VIEApps.net</Copyright>
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<Version>10.2.1812.3</Version>
-		<PackageId>VIEApps.Services.Abstractions</PackageId>
+		<Copyright>© 2019 VIEApps.net</Copyright>
+		<PackageLicense>LICENSE.md</PackageLicense>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
 		<PackageReleaseNotes>Upgrade to latest components</PackageReleaseNotes>
 		<PackageIconUrl>https://github.com/vieapps/Components.Utility/raw/master/logo.png</PackageIconUrl>
@@ -36,10 +37,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MsgPack.Cli" Version="1.0.0" />
-		<PackageReference Include="System.Reactive" Version="4.1.2" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.2.1812.2" />
-		<PackageReference Include="WampSharp.Default.Client" Version="18.11.1" />
+		<PackageReference Include="Castle.Core" Version="4.3.1" />
+		<PackageReference Include="MsgPack.Cli" Version="1.0.1" />
+		<PackageReference Include="System.Reactive" Version="4.1.3" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.2.1903.3" />
+		<PackageReference Include="WampSharp.Default.Client" Version="19.1.1" />
 	</ItemGroup>
 
 </Project>

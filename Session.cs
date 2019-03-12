@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using net.vieapps.Components.Security;
 namespace net.vieapps.Services
 {
 	/// <summary>
 	/// Presents a working session
 	/// </summary>
-	[Serializable]
+	[System.Serializable]
 	public class Session
 	{
 		/// <summary>
