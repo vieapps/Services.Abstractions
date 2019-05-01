@@ -12,13 +12,15 @@ namespace net.vieapps.Services
 		/// <summary>
 		/// Initializes a requesting information
 		/// </summary>
-		public RequestInfo() : this(null, null) { }
+		public RequestInfo()
+			: this(null, null) { }
 
 		/// <summary>
 		/// Initializes a requesting information
 		/// </summary>
 		/// <param name="requestInfo"></param>
-		public RequestInfo(RequestInfo requestInfo) : this(requestInfo?.Session, requestInfo?.ServiceName, requestInfo?.ObjectName, requestInfo?.Verb, requestInfo?.Query, requestInfo?.Header, requestInfo?.Body, requestInfo?.Extra, requestInfo?.CorrelationID) { }
+		public RequestInfo(RequestInfo requestInfo)
+			: this(requestInfo?.Session, requestInfo?.ServiceName, requestInfo?.ObjectName, requestInfo?.Verb, requestInfo?.Query, requestInfo?.Header, requestInfo?.Body, requestInfo?.Extra, requestInfo?.CorrelationID) { }
 
 		/// <summary>
 		/// Initializes a requesting information
@@ -62,7 +64,7 @@ namespace net.vieapps.Services
 		public string ObjectName { get; set; }
 
 		/// <summary>
-		/// Gets or sets the verb (GET/POST/PUT/DELETE)
+		/// Gets or sets the verb (HEAD/GET/POST/PUT/DELETE/PATCH or whatever)
 		/// </summary>
 		public string Verb { get; set; }
 
