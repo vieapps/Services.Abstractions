@@ -28,7 +28,7 @@ namespace net.vieapps.Services
 			this.AppOrigin = session?.AppOrigin ?? "";
 			this.AppMode = session?.AppMode ?? "Client";
 			this.User = session?.User ?? new User("", this.SessionID, new List<string>(), new List<Privilege>());
-			this.Verification = session != null ? session.Verification : false;
+			this.Verified = session != null ? session.Verified : false;
 		}
 
 		#region Properties
@@ -78,9 +78,9 @@ namespace net.vieapps.Services
 		public User User { get; set; }
 
 		/// <summary>
-		/// Gets or sets two-factors verification status
+		/// Gets or sets the verification state of two-factors authentication
 		/// </summary>
-		public bool Verification { get; set; }
+		public bool Verified { get; set; }
 		#endregion
 
 	}
