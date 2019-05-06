@@ -31,7 +31,7 @@ namespace net.vieapps.Services
 		/// <param name="requestInfo">Requesting Information</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}")]
+		[WampProcedure("services.{0}")]
 		Task<JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace net.vieapps.Services
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="objectIdentity">The identity of the service's object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.manage.object")]
+		[WampProcedure("services.{0}.permissions.manage.object")]
 		Task<bool> CanManageAsync(IUser user, string objectName, string objectIdentity);
 
 		/// <summary>
@@ -52,7 +52,7 @@ namespace net.vieapps.Services
 		/// <param name="definitionID">The identity of the entity definition</param>
 		/// <param name="objectID">The identity of the business object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.manage.definition")]
+		[WampProcedure("services.{0}.permissions.manage.definition")]
 		Task<bool> CanManageAsync(IUser user, string systemID, string definitionID, string objectID);
 
 		/// <summary>
@@ -62,7 +62,7 @@ namespace net.vieapps.Services
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="objectIdentity">The identity of the service's object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.moderate.object")]
+		[WampProcedure("services.{0}.permissions.moderate.object")]
 		Task<bool> CanModerateAsync(IUser user, string objectName, string objectIdentity);
 
 		/// <summary>
@@ -73,7 +73,7 @@ namespace net.vieapps.Services
 		/// <param name="definitionID">The identity of the entity definition</param>
 		/// <param name="objectID">The identity of the business object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.moderate.definition")]
+		[WampProcedure("services.{0}.permissions.moderate.definition")]
 		Task<bool> CanModerateAsync(IUser user, string systemID, string definitionID, string objectID);
 
 		/// <summary>
@@ -83,7 +83,7 @@ namespace net.vieapps.Services
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="objectIdentity">The identity of the service's object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.edit.object")]
+		[WampProcedure("services.{0}.permissions.edit.object")]
 		Task<bool> CanEditAsync(IUser user, string objectName, string objectIdentity);
 
 		/// <summary>
@@ -94,7 +94,7 @@ namespace net.vieapps.Services
 		/// <param name="definitionID">The identity of the entity definition</param>
 		/// <param name="objectID">The identity of the business object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.edit.definition")]
+		[WampProcedure("services.{0}.permissions.edit.definition")]
 		Task<bool> CanEditAsync(IUser user, string systemID, string definitionID, string objectID);
 
 		/// <summary>
@@ -104,7 +104,7 @@ namespace net.vieapps.Services
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="objectIdentity">The identity of the service's object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.contribute.object")]
+		[WampProcedure("services.{0}.permissions.contribute.object")]
 		Task<bool> CanContributeAsync(IUser user, string objectName, string objectIdentity);
 
 		/// <summary>
@@ -115,7 +115,7 @@ namespace net.vieapps.Services
 		/// <param name="definitionID">The identity of the entity definition</param>
 		/// <param name="objectID">The identity of the business object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.contribute.definition")]
+		[WampProcedure("services.{0}.permissions.contribute.definition")]
 		Task<bool> CanContributeAsync(IUser user, string systemID, string definitionID, string objectID);
 
 		/// <summary>
@@ -125,7 +125,7 @@ namespace net.vieapps.Services
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="objectIdentity">The identity of the service's object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.view.object")]
+		[WampProcedure("services.{0}.permissions.view.object")]
 		Task<bool> CanViewAsync(IUser user, string objectName, string objectIdentity);
 
 		/// <summary>
@@ -136,7 +136,7 @@ namespace net.vieapps.Services
 		/// <param name="definitionID">The identity of the entity definition</param>
 		/// <param name="objectID">The identity of the business object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.view.definition")]
+		[WampProcedure("services.{0}.permissions.view.definition")]
 		Task<bool> CanViewAsync(IUser user, string systemID, string definitionID, string objectID);
 
 		/// <summary>
@@ -146,7 +146,7 @@ namespace net.vieapps.Services
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="objectIdentity">The identity of the service's object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.download.object")]
+		[WampProcedure("services.{0}.permissions.download.object")]
 		Task<bool> CanDownloadAsync(IUser user, string objectName, string objectIdentity);
 
 		/// <summary>
@@ -157,7 +157,7 @@ namespace net.vieapps.Services
 		/// <param name="definitionID">The identity of the entity definition</param>
 		/// <param name="objectID">The identity of the business object</param>
 		/// <returns></returns>
-		[WampProcedure("net.vieapps.services.{0}.permissions.download.definition")]
+		[WampProcedure("services.{0}.permissions.download.definition")]
 		Task<bool> CanDownloadAsync(IUser user, string systemID, string definitionID, string objectID);
 	}
 }
