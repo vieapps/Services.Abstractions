@@ -7,12 +7,12 @@
 		<WarningLevel>3</WarningLevel>
 		<DocumentationFile>bin\$(Configuration)\netstandard2.0\VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<AssemblyTitle>VIEApps NGX Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.2.1905.1</AssemblyVersion>
-		<FileVersion>10.2.1905.1</FileVersion>
-		<InformationalVersion>v10.2.netstandard-2+rev:2019.05.06-URI.two.factors.verified</InformationalVersion>
+		<AssemblyVersion>10.2.1905.2</AssemblyVersion>
+		<FileVersion>10.2.1905.2</FileVersion>
+		<InformationalVersion>v10.2.netstandard-2+rev:2019.05.07-URI.two.factors.verified</InformationalVersion>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageId>VIEApps.Services.Abstractions</PackageId>
-		<Version>10.2.1905.1</Version>
+		<Version>10.2.1905.2</Version>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
@@ -22,7 +22,7 @@
 		<PackageLicense>LICENSE.md</PackageLicense>
 		<PackageOutputPath>..\..\Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>Upgrade to latest components</PackageReleaseNotes>
+		<PackageReleaseNotes>Refactoring: service/topic URIs</PackageReleaseNotes>
 		<PackageIconUrl>https://github.com/vieapps/Components.Utility/raw/master/logo.png</PackageIconUrl>
 		<PackageProjectUrl>https://github.com/vieapps/Services.Abstractions</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
@@ -41,7 +41,7 @@
 		<PackageReference Include="Castle.Core" Version="4.4.0" />
 		<PackageReference Include="MsgPack.Cli" Version="1.0.1" />
 		<PackageReference Include="System.Reactive" Version="4.1.5" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.2.1905.1" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.2.1905.2" />
 		<PackageReference Include="WampSharp.Default.Client" Version="19.3.1" />
 	</ItemGroup>
 

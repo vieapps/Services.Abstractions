@@ -19,7 +19,7 @@ namespace net.vieapps.Services
 		/// <param name="stack">The simple stack (usually is Exception.StackTrace)</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.logs.single")]
+		[WampProcedure("services.logging.single")]
 		Task WriteLogAsync(string correlationID, string serviceName, string objectName, string log, string stack = null, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
@@ -32,7 +32,7 @@ namespace net.vieapps.Services
 		/// <param name="stack">The simple stack (usually is Exception.StackTrace)</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.logs.multiple")]
+		[WampProcedure("services.logging.multiple")]
 		Task WriteLogsAsync(string correlationID, string serviceName, string objectName, List<string> logs, string stack = null, CancellationToken cancellationToken = default(CancellationToken));
 	}
 }

@@ -27,7 +27,7 @@ namespace net.vieapps.Services
 			this.AppAgent = session?.AppAgent ?? "";
 			this.AppOrigin = session?.AppOrigin ?? "";
 			this.AppMode = session?.AppMode ?? "Client";
-			this.User = session?.User ?? new User("", this.SessionID, new List<string>(), new List<Privilege>());
+			this.User = session?.User ?? User.GetDefault(this.SessionID);
 			this.Verified = session != null ? session.Verified : false;
 		}
 
