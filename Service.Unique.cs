@@ -7,12 +7,12 @@ namespace net.vieapps.Services
 	public interface IUniqueService : System.IDisposable
 	{
 		/// <summary>
-		/// Gets the unique name of this service (for working with WAMP router)
+		/// Gets the unique name of this service (for working with API Gateway router)
 		/// </summary>
 		string ServiceUniqueName { get; }
 
 		/// <summary>
-		/// Gets the unique URI of this service (with full namespace - for working with WAMP router)
+		/// Gets the unique URI of this service (with full namespace - for working with API Gateway router)
 		/// </summary>
 		string ServiceUniqueURI { get; }
 

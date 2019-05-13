@@ -15,7 +15,7 @@ namespace net.vieapps.Services
 		/// <param name="message">The message</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.rtu.update.message")]
+		[WampProcedure("services.messaging.update.single")]
 		Task SendUpdateMessageAsync(UpdateMessage message, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
@@ -26,7 +26,7 @@ namespace net.vieapps.Services
 		/// <param name="excludedDeviceID">The string that presents identity of a device to be excluded</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.rtu.update.messages")]
+		[WampProcedure("services.messaging.update.multiple")]
 		Task SendUpdateMessagesAsync(List<BaseMessage> messages, string deviceID, string excludedDeviceID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
@@ -36,7 +36,7 @@ namespace net.vieapps.Services
 		/// <param name="message">The message</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.rtu.intercommunicate.base.message")]
+		[WampProcedure("services.messaging.communicate.single.base")]
 		Task SendInterCommunicateMessageAsync(string serviceName, BaseMessage message, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
@@ -45,7 +45,7 @@ namespace net.vieapps.Services
 		/// <param name="message">The message</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.rtu.intercommunicate.message")]
+		[WampProcedure("services.messaging.communicate.single")]
 		Task SendInterCommunicateMessageAsync(CommunicateMessage message, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
@@ -55,7 +55,7 @@ namespace net.vieapps.Services
 		/// <param name="messages">The collection of messages</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.rtu.intercommunicate.base.messages")]
+		[WampProcedure("services.messaging.communicate.multiple.base")]
 		Task SendInterCommunicateMessagesAsync(string serviceName, List<BaseMessage> messages, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
@@ -64,7 +64,7 @@ namespace net.vieapps.Services
 		/// <param name="messages">The collection of messages</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.rtu.intercommunicate.messages")]
+		[WampProcedure("services.messaging.communicate.multiple")]
 		Task SendInterCommunicateMessagesAsync(List<CommunicateMessage> messages, CancellationToken cancellationToken = default(CancellationToken));
 	}
 }

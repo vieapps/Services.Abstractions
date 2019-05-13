@@ -7,12 +7,12 @@ namespace net.vieapps.Services
 	public interface IServiceComponent : IDisposable
 	{
 		/// <summary>
-		/// Gets the name of this service (for working with WAMP router)
+		/// Gets the name of this service (for working with API Gateway router)
 		/// </summary>
 		string ServiceName { get; }
 
 		/// <summary>
-		/// Gets the URI of this service (with full namespace - for working with WAMP router)
+		/// Gets the URI of this service (with full namespace - for working with API Gateway router)
 		/// </summary>
 		string ServiceURI { get; }
 
