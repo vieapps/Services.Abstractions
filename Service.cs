@@ -28,7 +28,7 @@ namespace net.vieapps.Services
 		/// <summary>
 		/// Process the request of this service
 		/// </summary>
-		/// <param name="requestInfo">Requesting Information</param>
+		/// <param name="requestInfo">The requesting Information</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("services.{0}")]
@@ -39,125 +39,155 @@ namespace net.vieapps.Services
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
-		/// <param name="objectIdentity">The identity of the service's object</param>
+		/// <param name="systemID">The identity of the business system</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.manage.object")]
-		Task<bool> CanManageAsync(IUser user, string objectName, string objectIdentity);
+		[WampProcedure("services.{0}.privileges.manage")]
+		Task<bool> CanManageAsync(IUser user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
 		/// Gets the state that determines the user is able to manage or not
 		/// </summary>
-		/// <param name="user">The user who performs the action</param>
+		/// <param name="requestInfo">The requesting information</param>
+		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the entity definition</param>
-		/// <param name="objectID">The identity of the business object</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.manage.definition")]
-		Task<bool> CanManageAsync(IUser user, string systemID, string definitionID, string objectID);
+		[WampProcedure("services.{0}.privileges.manages")]
+		Task<bool> CanManageAsync(RequestInfo requestInfo, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
 		/// Gets the state that determines the user is able to moderate or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
-		/// <param name="objectIdentity">The identity of the service's object</param>
+		/// <param name="systemID">The identity of the business system</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.moderate.object")]
-		Task<bool> CanModerateAsync(IUser user, string objectName, string objectIdentity);
+		[WampProcedure("services.{0}.privileges.moderate")]
+		Task<bool> CanModerateAsync(IUser user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
 		/// Gets the state that determines the user is able to moderate or not
 		/// </summary>
-		/// <param name="user">The user who performs the action</param>
+		/// <param name="requestInfo">The requesting information</param>
+		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the entity definition</param>
-		/// <param name="objectID">The identity of the business object</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.moderate.definition")]
-		Task<bool> CanModerateAsync(IUser user, string systemID, string definitionID, string objectID);
+		[WampProcedure("services.{0}.privileges.moderates")]
+		Task<bool> CanModerateAsync(RequestInfo requestInfo, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
 		/// Gets the state that determines the user is able to edit or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
-		/// <param name="objectIdentity">The identity of the service's object</param>
+		/// <param name="systemID">The identity of the business system</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.edit.object")]
-		Task<bool> CanEditAsync(IUser user, string objectName, string objectIdentity);
+		[WampProcedure("services.{0}.privileges.edit")]
+		Task<bool> CanEditAsync(IUser user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
 		/// Gets the state that determines the user is able to edit or not
 		/// </summary>
-		/// <param name="user">The user who performs the action</param>
+		/// <param name="requestInfo">The requesting information</param>
+		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the entity definition</param>
-		/// <param name="objectID">The identity of the business object</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.edit.definition")]
-		Task<bool> CanEditAsync(IUser user, string systemID, string definitionID, string objectID);
+		[WampProcedure("services.{0}.privileges.edits")]
+		Task<bool> CanEditAsync(RequestInfo requestInfo, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
 		/// Gets the state that determines the user is able to contribute or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
-		/// <param name="objectIdentity">The identity of the service's object</param>
+		/// <param name="systemID">The identity of the business system</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.contribute.object")]
-		Task<bool> CanContributeAsync(IUser user, string objectName, string objectIdentity);
+		[WampProcedure("services.{0}.privileges.contribute")]
+		Task<bool> CanContributeAsync(IUser user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
 		/// Gets the state that determines the user is able to contribute or not
 		/// </summary>
-		/// <param name="user">The user who performs the action</param>
+		/// <param name="requestInfo">The requesting information</param>
+		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the entity definition</param>
-		/// <param name="objectID">The identity of the business object</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.contribute.definition")]
-		Task<bool> CanContributeAsync(IUser user, string systemID, string definitionID, string objectID);
+		[WampProcedure("services.{0}.privileges.contributes")]
+		Task<bool> CanContributeAsync(RequestInfo requestInfo, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
 		/// Gets the state that determines the user is able to view or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
-		/// <param name="objectIdentity">The identity of the service's object</param>
+		/// <param name="systemID">The identity of the business system</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.view.object")]
-		Task<bool> CanViewAsync(IUser user, string objectName, string objectIdentity);
+		[WampProcedure("services.{0}.privileges.view")]
+		Task<bool> CanViewAsync(IUser user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
 		/// Gets the state that determines the user is able to view or not
 		/// </summary>
-		/// <param name="user">The user who performs the action</param>
-		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the entity definition</param>
-		/// <param name="objectID">The identity of the business object</param>
-		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.view.definition")]
-		Task<bool> CanViewAsync(IUser user, string systemID, string definitionID, string objectID);
-
-		/// <summary>
-		/// Gets the state that determines the user is able to download or not
-		/// </summary>
-		/// <param name="user">The user who performs the action</param>
+		/// <param name="requestInfo">The requesting information</param>
 		/// <param name="objectName">The name of the service's object</param>
-		/// <param name="objectIdentity">The identity of the service's object</param>
+		/// <param name="systemID">The identity of the business system</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.download.object")]
-		Task<bool> CanDownloadAsync(IUser user, string objectName, string objectIdentity);
+		[WampProcedure("services.{0}.privileges.views")]
+		Task<bool> CanViewAsync(RequestInfo requestInfo, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
 		/// Gets the state that determines the user is able to download the attachment files or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
+		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the entity definition</param>
-		/// <param name="objectID">The identity of the business object</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
-		[WampProcedure("services.{0}.permissions.download.definition")]
-		Task<bool> CanDownloadAsync(IUser user, string systemID, string definitionID, string objectID);
+		[WampProcedure("services.{0}.privileges.download")]
+		Task<bool> CanDownloadAsync(IUser user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
+
+		/// <summary>
+		/// Gets the state that determines the user is able to download or not
+		/// </summary>
+		/// <param name="requestInfo">The requesting information</param>
+		/// <param name="objectName">The name of the service's object</param>
+		/// <param name="systemID">The identity of the business system</param>
+		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="objectID">The identity of the object</param>
+		/// <param name="cancellationToken">The cancellation token</param>
+		/// <returns></returns>
+		[WampProcedure("services.{0}.privileges.downloads")]
+		Task<bool> CanDownloadAsync(RequestInfo requestInfo, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 	}
 }

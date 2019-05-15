@@ -37,9 +37,9 @@ namespace net.vieapps.Services
 		public RequestInfo(Session session, string serviceName, string objectName = null, string verb = null, Dictionary<string, string> query = null, Dictionary<string, string> header = null, string body = null, Dictionary<string, string> extra = null, string correlationID = null)
 		{
 			this.Session = new Session(session);
-			this.ServiceName = string.IsNullOrWhiteSpace(serviceName) ? "unknown" : serviceName.Trim().ToLower();
-			this.ObjectName = string.IsNullOrWhiteSpace(objectName) ? "unknown" : objectName.Trim().ToLower();
-			this.Verb = string.IsNullOrWhiteSpace(verb) ? "GET" : verb.Trim().ToUpper();
+			this.ServiceName = (serviceName ?? "unknown").ToLower();
+			this.ObjectName = (objectName ?? "").Trim().ToLower();
+			this.Verb = (verb ?? "GET").Trim().ToUpper();
 			this.Query = new Dictionary<string, string>(query ?? new Dictionary<string, string>(), StringComparer.OrdinalIgnoreCase);
 			this.Header = new Dictionary<string, string>(header ?? new Dictionary<string, string>(), StringComparer.OrdinalIgnoreCase);
 			this.Body = string.IsNullOrWhiteSpace(body) ? "" : body;
