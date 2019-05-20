@@ -11,12 +11,12 @@ namespace net.vieapps.Services
 	public interface IService : System.IDisposable
 	{
 		/// <summary>
-		/// Gets the name of this service (for working with WAMP)
+		/// Gets the name
 		/// </summary>
 		string ServiceName { get; }
 
 		/// <summary>
-		/// Gets the URI of this service (with full namespace - for working with WAMP)
+		/// Gets the URI
 		/// </summary>
 		string ServiceURI { get; }
 
@@ -26,7 +26,7 @@ namespace net.vieapps.Services
 		Microsoft.Extensions.Logging.ILogger Logger { get; }
 
 		/// <summary>
-		/// Process the request of this service
+		/// Process the request
 		/// </summary>
 		/// <param name="requestInfo">The requesting Information</param>
 		/// <param name="cancellationToken">The cancellation token</param>
@@ -35,7 +35,7 @@ namespace net.vieapps.Services
 		Task<JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
-		/// Gets the state that determines the user is able to manage or not
+		/// Determines the user is able to manage or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
@@ -48,7 +48,7 @@ namespace net.vieapps.Services
 		Task<bool> CanManageAsync(User user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
-		/// Gets the state that determines the user is able to moderate or not
+		/// Determines the user is able to moderate or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
@@ -61,7 +61,7 @@ namespace net.vieapps.Services
 		Task<bool> CanModerateAsync(User user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
-		/// Gets the state that determines the user is able to edit or not
+		/// Determines the user is able to edit or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
@@ -74,7 +74,7 @@ namespace net.vieapps.Services
 		Task<bool> CanEditAsync(User user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
-		/// Gets the state that determines the user is able to contribute or not
+		/// Determines the user is able to contribute or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
@@ -87,7 +87,7 @@ namespace net.vieapps.Services
 		Task<bool> CanContributeAsync(User user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
-		/// Gets the state that determines the user is able to view or not
+		/// Determines the user is able to view or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
@@ -100,7 +100,7 @@ namespace net.vieapps.Services
 		Task<bool> CanViewAsync(User user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <summary>
-		/// Gets the state that determines the user is able to download the attachment files or not
+		/// Determines the user is able to download or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>

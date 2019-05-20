@@ -7,12 +7,12 @@ namespace net.vieapps.Services
 	public interface IServiceComponent : IDisposable
 	{
 		/// <summary>
-		/// Gets the name of this service (for working with API Gateway router)
+		/// Gets the name
 		/// </summary>
 		string ServiceName { get; }
 
 		/// <summary>
-		/// Gets the URI of this service (with full namespace - for working with API Gateway router)
+		/// Gets the URI
 		/// </summary>
 		string ServiceURI { get; }
 
@@ -26,7 +26,7 @@ namespace net.vieapps.Services
 		/// </summary>
 		/// <param name="args">The arguments</param>
 		/// <param name="initializeRepository">true to initialize the repository of the service</param>
-		/// <param name="nextAsync">The next action to run asynchronously</param>
+		/// <param name="nextAsync">The next action to run on started</param>
 		void Start(string[] args = null, bool initializeRepository = true, Func<IService, System.Threading.Tasks.Task> nextAsync = null);
 
 		/// <summary>
