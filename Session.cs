@@ -11,7 +11,8 @@ namespace net.vieapps.Services
 		/// <summary>
 		/// Initializes a new session
 		/// </summary>
-		public Session() : this(null) { }
+		public Session()
+			: this(null) { }
 
 		/// <summary>
 		/// Initializes a new session
