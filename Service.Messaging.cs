@@ -16,7 +16,7 @@ namespace net.vieapps.Services
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("services.messaging.email")]
-		Task SendEmailAsync(EmailMessage message, CancellationToken cancellationToken = default(CancellationToken));
+		Task SendEmailAsync(EmailMessage message, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Sends a web hook message
@@ -25,6 +25,6 @@ namespace net.vieapps.Services
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("services.messaging.webhook")]
-		Task SendWebHookAsync(WebHookMessage message, CancellationToken cancellationToken = default(CancellationToken));
+		Task SendWebHookAsync(WebHookMessage message, CancellationToken cancellationToken = default);
 	}
 }

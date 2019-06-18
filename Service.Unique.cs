@@ -23,6 +23,6 @@ namespace net.vieapps.Services
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampSharp.V2.Rpc.WampProcedure("services.{0}")]
-		System.Threading.Tasks.Task<Newtonsoft.Json.Linq.JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default(CancellationToken));
+		System.Threading.Tasks.Task<Newtonsoft.Json.Linq.JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 	}
 }

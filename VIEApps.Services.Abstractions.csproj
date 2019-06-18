@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
 		<RootNamespace>net.vieapps.Services</RootNamespace>
 		<AssemblyName>VIEApps.Services.Abstractions</AssemblyName>
 		<WarningLevel>3</WarningLevel>
-		<DocumentationFile>bin\$(Configuration)\netstandard2.0\VIEApps.Services.Abstractions.xml</DocumentationFile>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<AssemblyTitle>VIEApps NGX Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.2.1906.2</AssemblyVersion>
-		<FileVersion>10.2.1906.2</FileVersion>
-		<InformationalVersion>v10.2.netstandard-2+rev:2019.05.23-meta.info</InformationalVersion>
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<AssemblyVersion>10.3.1906.3</AssemblyVersion>
+		<FileVersion>10.3.1906.3</FileVersion>
+		<InformationalVersion>v10.3.netstandard-2.x+rev:2019.06.18-multiple.targets.preview</InformationalVersion>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>VIEApps.Services.Abstractions</PackageId>
-		<Version>10.2.1906.2</Version>
+		<Version>10.3.1906.3-preview</Version>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
@@ -22,7 +22,7 @@
 		<PackageLicense>LICENSE.md</PackageLicense>
 		<PackageOutputPath>..\..\Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>Refactoring: privileges and service/topic URIs</PackageReleaseNotes>
+		<PackageReleaseNotes>Experimental with preview packages</PackageReleaseNotes>
 		<PackageProjectUrl>https://vieapps.net/</PackageProjectUrl>
 		<PackageIconUrl>https://github.com/vieapps/Components.Utility/raw/master/logo.png</PackageIconUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
@@ -40,9 +40,9 @@
 	<ItemGroup>
 		<PackageReference Include="Castle.Core" Version="4.4.0" />
 		<PackageReference Include="MsgPack.Cli" Version="1.0.1" />
-		<PackageReference Include="System.Reactive" Version="4.1.5" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.2.1906.2" />
-		<PackageReference Include="VIEApps.Components.Utility" Version="10.2.1906.2" />
+		<PackageReference Include="System.Reactive" Version="4.2.0-preview.566" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.3.1906.3-preview" />
+		<PackageReference Include="VIEApps.Components.Utility" Version="10.3.1906.3-preview" />
 		<PackageReference Include="WampSharp.Default.Client" Version="19.3.1" />
 	</ItemGroup>
 
