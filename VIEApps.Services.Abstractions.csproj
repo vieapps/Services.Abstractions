@@ -7,12 +7,12 @@
 		<WarningLevel>3</WarningLevel>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<AssemblyTitle>VIEApps NGX Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.3.1906.5</AssemblyVersion>
-		<FileVersion>10.3.1906.5</FileVersion>
-		<InformationalVersion>v10.3.1906+rev:2019.06.21-multiple.targets</InformationalVersion>
+		<AssemblyVersion>10.3.1907.1</AssemblyVersion>
+		<FileVersion>10.3.1907.1</FileVersion>
+		<InformationalVersion>10.3-$(TargetFramework)-build:03-3:03+multiple.targets</InformationalVersion>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageId>VIEApps.Services.Abstractions</PackageId>
-		<Version>10.3.1906.5-preview</Version>
+		<Version>10.3.1907.1-preview</Version>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
@@ -40,8 +40,8 @@
 	<ItemGroup>
 		<PackageReference Include="Castle.Core" Version="4.4.0" />
 		<PackageReference Include="MsgPack.Cli" Version="1.0.1" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.3.1906.5-preview" />
-		<PackageReference Include="VIEApps.Components.Utility" Version="10.3.1906.5-preview" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.3.1907.1-preview" />
+		<PackageReference Include="VIEApps.Components.Utility" Version="10.3.1907.1-preview" />
 		<PackageReference Include="WampSharp.Default.Client" Version="19.3.1" />
 	</ItemGroup>
 
