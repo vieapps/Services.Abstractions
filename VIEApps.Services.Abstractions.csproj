@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;netcoreapp3.0</TargetFrameworks>
 		<RootNamespace>net.vieapps.Services</RootNamespace>
 		<AssemblyName>VIEApps.Services.Abstractions</AssemblyName>
 		<WarningLevel>3</WarningLevel>
 		<DocumentationFile>bin/$(Configuration)/$(TargetFramework)/VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<AssemblyTitle>VIEApps NGX Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.3.1910.2</AssemblyVersion>
-		<FileVersion>10.3.1910.2</FileVersion>
-		<InformationalVersion>10.3@$(TargetFramework)-build:2019.10.01+multiple.targets</InformationalVersion>
-		<Version>10.3.1910.2</Version>
+		<AssemblyVersion>10.3.1910.4</AssemblyVersion>
+		<FileVersion>10.3.1910.4</FileVersion>
+		<InformationalVersion>10.3@$(TargetFramework)-build:2019.10.17+multiple.targets</InformationalVersion>
+		<Version>10.3.1910.4</Version>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
@@ -26,7 +26,7 @@
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageOutputPath>../../Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>Support .NET Standard 2.1</PackageReleaseNotes>
+		<PackageReleaseNotes>Add support of multiple target frameworks (.NET Standard 2.x/.NET Core 3.0) with latest components</PackageReleaseNotes>
 		<PackageProjectUrl>https://vieapps.net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -44,9 +44,9 @@
 	<ItemGroup>
 		<PackageReference Include="Castle.Core" Version="4.4.0" />
 		<PackageReference Include="MsgPack.Cli" Version="1.0.1" />
-		<PackageReference Include="System.Reactive" Version="4.1.6" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.3.1910.2" />
-		<PackageReference Include="VIEApps.Components.Utility" Version="10.3.1910.2" />
+		<PackageReference Include="System.Reactive" Version="4.2.0" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.3.1910.4" />
+		<PackageReference Include="VIEApps.Components.Utility" Version="10.3.1910.4" />
 		<PackageReference Include="WampSharp.Default.Client" Version="19.8.2" />
 	</ItemGroup>
 
