@@ -56,7 +56,7 @@ namespace net.vieapps.Services
 	[Serializable]
 	public class CommunicateMessage : BaseMessage
 	{
-		public CommunicateMessage() : this(null, null) { }
+		public CommunicateMessage() : this(null) { }
 
 		public CommunicateMessage(string serviceName, BaseMessage message = null) : base()
 		{

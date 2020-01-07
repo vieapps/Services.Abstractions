@@ -12,7 +12,9 @@ namespace net.vieapps.Services
 		/// <summary>
 		/// Writes the log into centralized log storage of all services
 		/// </summary>
-		/// <param name="correlationID">The identity of correlation</param>
+		/// <param name="correlationID">The identity for tracking the correlation</param>
+		/// <param name="developerID">The identity of the developer</param>
+		/// <param name="appID">The identity of the app</param>
 		/// <param name="serviceName">The name of service</param>
 		/// <param name="objectName">The name of serivice's object</param>
 		/// <param name="log">The log message</param>
@@ -20,12 +22,14 @@ namespace net.vieapps.Services
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("services.logging.single")]
-		Task WriteLogAsync(string correlationID, string serviceName, string objectName, string log, string stack = null, CancellationToken cancellationToken = default);
+		Task WriteLogAsync(string correlationID, string developerID, string appID, string serviceName, string objectName, string log, string stack = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Writes the log into centralized log storage of all services
 		/// </summary>
 		/// <param name="correlationID">The identity of correlation</param>
+		/// <param name="developerID">The identity of the developer</param>
+		/// <param name="appID">The identity of the app</param>
 		/// <param name="serviceName">The name of service</param>
 		/// <param name="objectName">The name of serivice's object</param>
 		/// <param name="logs">The collection of log messages</param>
@@ -33,6 +37,6 @@ namespace net.vieapps.Services
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("services.logging.multiple")]
-		Task WriteLogsAsync(string correlationID, string serviceName, string objectName, List<string> logs, string stack = null, CancellationToken cancellationToken = default);
+		Task WriteLogsAsync(string correlationID, string developerID, string appID, string serviceName, string objectName, List<string> logs, string stack = null, CancellationToken cancellationToken = default);
 	}
 }

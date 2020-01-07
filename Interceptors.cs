@@ -49,7 +49,7 @@ namespace net.vieapps.Services
 		/// <param name="name">The string that presents name of the service (for registering with right URI)</param>
 		/// <param name="options">The options for calling</param>
 		public ProxyInterceptor(string name = null, CallOptions options = null)
-			: base(options ?? new CallOptions())
+			: base(options ?? new CallOptions { DiscloseMe = false, ReceiveProgress = false })
 			=> this._name = name;
 
 		public override string GetProcedureUri(MethodInfo method)

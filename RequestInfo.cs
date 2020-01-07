@@ -13,7 +13,7 @@ namespace net.vieapps.Services
 		/// Initializes a requesting information
 		/// </summary>
 		public RequestInfo()
-			: this(null, null) { }
+			: this(null) { }
 
 		/// <summary>
 		/// Initializes a requesting information

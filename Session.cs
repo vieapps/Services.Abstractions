@@ -21,22 +21,34 @@ namespace net.vieapps.Services
 		public Session(Session session)
 		{
 			this.SessionID = session?.SessionID ?? "";
+			this.User = session?.User ?? User.GetDefault(this.SessionID);
+			this.Verified = session != null ? session.Verified : false;
 			this.DeviceID = session?.DeviceID ?? "";
 			this.IP = session?.IP ?? "";
+			this.DeveloperID = session?.DeveloperID ?? "";
+			this.AppID = session?.AppID ?? "";
 			this.AppName = session?.AppName ?? "";
 			this.AppPlatform = session?.AppPlatform ?? "";
 			this.AppAgent = session?.AppAgent ?? "";
 			this.AppOrigin = session?.AppOrigin ?? "";
 			this.AppMode = session?.AppMode ?? "Client";
-			this.User = session?.User ?? User.GetDefault(this.SessionID);
-			this.Verified = session != null ? session.Verified : false;
 		}
 
 		#region Properties
 		/// <summary>
-		/// Gets or sets the identity of session
+		/// Gets or sets the identity of the session
 		/// </summary>
 		public string SessionID { get; set; }
+
+		/// <summary>
+		/// Gets or sets the information of user who performs the action in the sesssion
+		/// </summary>
+		public User User { get; set; }
+
+		/// <summary>
+		/// Gets or sets the verification status of two-factors authentication
+		/// </summary>
+		public bool Verified { get; set; }
 
 		/// <summary>
 		/// Gets or sets the device's identity (Device UUID) that associates with this session
@@ -44,9 +56,19 @@ namespace net.vieapps.Services
 		public string DeviceID { get; set; }
 
 		/// <summary>
-		/// Gets or sets the IP address of client's device
+		/// Gets or sets the IP address of the remote device that associates with this session
 		/// </summary>
 		public string IP { get; set; }
+
+		/// <summary>
+		/// Gets or sets the identity of the developer that associates with this session
+		/// </summary>
+		public string DeveloperID { get; set; }
+
+		/// <summary>
+		/// Gets or sets the identity of the app that associates with this session
+		/// </summary>
+		public string AppID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the the app that associates with this session
@@ -72,16 +94,6 @@ namespace net.vieapps.Services
 		/// Gets or sets the mode of the app that associates with this session
 		/// </summary>
 		public string AppMode { get; set; }
-
-		/// <summary>
-		/// Gets or sets the information of user who performs the action in the sesssion
-		/// </summary>
-		public User User { get; set; }
-
-		/// <summary>
-		/// Gets or sets the verification state of two-factors authentication
-		/// </summary>
-		public bool Verified { get; set; }
 		#endregion
 
 	}
