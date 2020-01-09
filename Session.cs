@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using net.vieapps.Components.Security;
+﻿using net.vieapps.Components.Security;
 namespace net.vieapps.Services
 {
 	/// <summary>

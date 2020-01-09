@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 namespace net.vieapps.Services
 {
 	/// <summary>
-	/// Presents a message for updating information
+	/// Presents a base message for updating information
 	/// </summary>
 	[Serializable]
 	public class BaseMessage
