@@ -1,4 +1,5 @@
 ﻿using net.vieapps.Components.Security;
+using net.vieapps.Components.Utility;
 namespace net.vieapps.Services
 {
 	/// <summary>
@@ -95,6 +96,20 @@ namespace net.vieapps.Services
 		public string AppMode { get; set; }
 		#endregion
 
+		/// <summary>
+		/// Returns a JSON string that represents the current object
+		/// </summary>
+		/// <param name="formatting"></param>
+		/// <returns></returns>
+		public string ToString(Newtonsoft.Json.Formatting formatting)
+			=> this.ToJson().ToString(formatting);
+
+		/// <summary>
+		/// Returns a string that represents the current object
+		/// </summary>
+		/// <returns></returns>
+		public override string ToString()
+			=> this.ToString(Newtonsoft.Json.Formatting.None);
 	}
 
 }
