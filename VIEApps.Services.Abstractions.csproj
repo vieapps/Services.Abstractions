@@ -7,10 +7,10 @@
 		<WarningLevel>3</WarningLevel>
 		<DocumentationFile>bin/$(Configuration)/$(TargetFramework)/VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<AssemblyTitle>VIEApps NGX Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.3.2001.2</AssemblyVersion>
-		<FileVersion>10.3.2001.2</FileVersion>
-		<InformationalVersion>10.3@$(TargetFramework)-build:2020.01.13+multiple.targets+helpers</InformationalVersion>
-		<Version>10.3.2001.2</Version>
+		<AssemblyVersion>10.3.2001.4</AssemblyVersion>
+		<FileVersion>10.3.2001.4</FileVersion>
+		<InformationalVersion>10.3@$(TargetFramework)-build:2020.01.20+multiple.targets+helpers</InformationalVersion>
+		<Version>10.3.2001.4</Version>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
@@ -28,7 +28,7 @@
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageOutputPath>../../Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>Add more targets and upgrade to latest components</PackageReleaseNotes>
+		<PackageReleaseNotes>Upgrade to latest components and add more helper methods</PackageReleaseNotes>
 		<PackageProjectUrl>https://vieapps.net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -47,9 +47,9 @@
 		<PackageReference Include="Castle.Core" Version="4.4.0" />
 		<PackageReference Include="MsgPack.Cli" Version="1.0.1" />
 		<PackageReference Include="System.Reactive" Version="4.3.2" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.3.2001.2" />
-		<PackageReference Include="VIEApps.Components.Utility" Version="10.3.2001.2" />
-		<PackageReference Include="WampSharp.Default.Client" Version="19.8.2" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.3.2001.4" />
+		<PackageReference Include="VIEApps.Components.Utility" Version="10.3.2001.4" />
+		<PackageReference Include="WampSharp.Default.Client" Version="20.1.1" />
 	</ItemGroup>
 
 </Project>
