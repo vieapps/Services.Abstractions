@@ -6,7 +6,7 @@
 		<AssemblyName>VIEApps.Services.Abstractions</AssemblyName>
 		<WarningLevel>3</WarningLevel>
 		<DocumentationFile>bin/$(Configuration)/$(TargetFramework)/VIEApps.Services.Abstractions.xml</DocumentationFile>
-		<AssemblyTitle>VIEApps NGX Abstractions</AssemblyTitle>
+		<AssemblyTitle>VIEApps NGX Service Abstractions</AssemblyTitle>
 		<AssemblyVersion>10.3.2002.1</AssemblyVersion>
 		<FileVersion>10.3.2002.1</FileVersion>
 		<InformationalVersion>10.3@$(TargetFramework)-build:2020.02.02+multiple.targets+helpers</InformationalVersion>
