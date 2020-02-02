@@ -7,10 +7,10 @@
 		<WarningLevel>3</WarningLevel>
 		<DocumentationFile>bin/$(Configuration)/$(TargetFramework)/VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<AssemblyTitle>VIEApps NGX Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.3.2001.4</AssemblyVersion>
-		<FileVersion>10.3.2001.4</FileVersion>
-		<InformationalVersion>10.3@$(TargetFramework)-build:2020.01.20+multiple.targets+helpers</InformationalVersion>
-		<Version>10.3.2001.4</Version>
+		<AssemblyVersion>10.3.2002.1</AssemblyVersion>
+		<FileVersion>10.3.2002.1</FileVersion>
+		<InformationalVersion>10.3@$(TargetFramework)-build:2020.02.02+multiple.targets+helpers</InformationalVersion>
+		<Version>10.3.2002.1</Version>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
@@ -28,7 +28,7 @@
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageOutputPath>../../Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>Upgrade to latest components and add more helper methods</PackageReleaseNotes>
+		<PackageReleaseNotes>Improvement: remove dependencies of Castle Core and MessagePack CLI</PackageReleaseNotes>
 		<PackageProjectUrl>https://vieapps.net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -45,8 +45,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="System.Reactive" Version="4.3.2" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.3.2001.4" />
-		<PackageReference Include="VIEApps.Components.Utility" Version="10.3.2001.4" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.3.2002.1" />
+		<PackageReference Include="VIEApps.Components.Utility" Version="10.3.2002.1" />
 		<PackageReference Include="WampSharp.Default.Client" Version="20.1.1" />
 	</ItemGroup>
 
