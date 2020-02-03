@@ -101,7 +101,7 @@ namespace net.vieapps.Services
 		/// </summary>
 		/// <param name="formatting"></param>
 		/// <returns></returns>
-		public string ToString(Newtonsoft.Json.Formatting formatting)
+		public virtual string ToString(Newtonsoft.Json.Formatting formatting)
 			=> this.ToJson().ToString(formatting);
 
 		/// <summary>
