@@ -7,10 +7,10 @@
 		<WarningLevel>3</WarningLevel>
 		<DocumentationFile>bin/$(Configuration)/$(TargetFramework)/VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<AssemblyTitle>VIEApps NGX Service Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.3.2002.4</AssemblyVersion>
-		<FileVersion>10.3.2002.4</FileVersion>
-		<InformationalVersion>10.3@$(TargetFramework)-4.lover+build:2020.02.19+lts.targets</InformationalVersion>
-		<Version>10.3.2002.4</Version>
+		<AssemblyVersion>10.3.2002.5</AssemblyVersion>
+		<FileVersion>10.3.2002.5</FileVersion>
+		<InformationalVersion>10.3@$(TargetFramework)-so.excited.4.lover+build:2020.02.20+lts.targets</InformationalVersion>
+		<Version>10.3.2002.5</Version>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
@@ -28,7 +28,7 @@
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageOutputPath>../../Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>Restructure: only support LTS targets</PackageReleaseNotes>
+		<PackageReleaseNotes>Do some little code refactoring</PackageReleaseNotes>
 		<PackageProjectUrl>https://vieapps.net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -45,7 +45,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="System.Reactive" Version="4.3.2" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.3.2002.4" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.3.2002.5" />
 		<PackageReference Include="WampSharp.Default.Client" Version="20.1.1" />
 	</ItemGroup>
 
