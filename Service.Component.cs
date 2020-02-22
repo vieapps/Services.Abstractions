@@ -17,7 +17,7 @@ namespace net.vieapps.Services
 		string ServiceURI { get; }
 
 		/// <summary>
-		/// Gets or Sets the logger
+		/// Gets or sets the logger
 		/// </summary>
 		Microsoft.Extensions.Logging.ILogger Logger { get; set; }
 

@@ -12,7 +12,7 @@
 		Initializing,
 
 		/// <summary>
-		/// Ready state means the service is initialized and ready to register with router
+		/// Ready state means the service is initialized and ready to register with API Gateway
 		/// </summary>
 		Ready,
 
