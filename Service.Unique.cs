@@ -1,10 +1,14 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using WampSharp.V2.Rpc;
 namespace net.vieapps.Services
 {
 	/// <summary>
 	/// Presents a unique business service (means a single instance of a business service at a specific host/controller)
 	/// </summary>
-	public interface IUniqueService : System.IDisposable
+	public interface IUniqueService : IDisposable
 	{
 		/// <summary>
 		/// Gets the unique name
@@ -17,12 +21,12 @@ namespace net.vieapps.Services
 		string ServiceUniqueURI { get; }
 
 		/// <summary>
-		/// Process the request of this service
+		/// Processes the request
 		/// </summary>
-		/// <param name="requestInfo">Requesting Information</param>
+		/// <param name="requestInfo">The requesting information</param>
 		/// <param name="cancellationToken">The cancellation token</param>
-		/// <returns></returns>
-		[WampSharp.V2.Rpc.WampProcedure("services.{0}")]
-		System.Threading.Tasks.Task<Newtonsoft.Json.Linq.JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
+		/// <returns>The JSON object that contains the result</returns>
+		[WampProcedure("services.{0}")]
+		Task<JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 	}
 }

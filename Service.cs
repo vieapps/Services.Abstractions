@@ -1,6 +1,8 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using WampSharp.V2.Rpc;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using net.vieapps.Components.Security;
 namespace net.vieapps.Services
@@ -8,7 +10,7 @@ namespace net.vieapps.Services
 	/// <summary>
 	/// Presents a business service
 	/// </summary>
-	public interface IService : System.IDisposable
+	public interface IService : IDisposable
 	{
 		/// <summary>
 		/// Gets the name
@@ -23,14 +25,14 @@ namespace net.vieapps.Services
 		/// <summary>
 		/// Gets the logger
 		/// </summary>
-		Microsoft.Extensions.Logging.ILogger Logger { get; }
+		ILogger Logger { get; }
 
 		/// <summary>
-		/// Process the request
+		/// Processes the request
 		/// </summary>
-		/// <param name="requestInfo">The requesting Information</param>
+		/// <param name="requestInfo">The requesting information</param>
 		/// <param name="cancellationToken">The cancellation token</param>
-		/// <returns></returns>
+		/// <returns>The JSON object that contains the result</returns>
 		[WampProcedure("services.{0}")]
 		Task<JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 

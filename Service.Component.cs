@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.Logging;
 namespace net.vieapps.Services
 {
 	/// <summary>
@@ -19,15 +20,15 @@ namespace net.vieapps.Services
 		/// <summary>
 		/// Gets or sets the logger
 		/// </summary>
-		Microsoft.Extensions.Logging.ILogger Logger { get; set; }
+		ILogger Logger { get; set; }
 
 		/// <summary>
 		/// Starts the service
 		/// </summary>
 		/// <param name="args">The arguments</param>
 		/// <param name="initializeRepository">true to initialize the repository of the service</param>
-		/// <param name="nextAsync">The next action to run on started</param>
-		void Start(string[] args = null, bool initializeRepository = true, Func<IService, System.Threading.Tasks.Task> nextAsync = null);
+		/// <param name="next">The next action to run when the service was started</param>
+		void Start(string[] args = null, bool initializeRepository = true, Action<IService> next = null);
 
 		/// <summary>
 		/// Stops the service
