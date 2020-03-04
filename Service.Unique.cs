@@ -6,9 +6,9 @@ using WampSharp.V2.Rpc;
 namespace net.vieapps.Services
 {
 	/// <summary>
-	/// Presents a unique business service (means a single instance of a business service at a specific host/controller)
+	/// Presents an unique business service in the VIEApps NGX (means a single instance of a business service at a specific host/controller)
 	/// </summary>
-	public interface IUniqueService : IDisposable
+	public interface IUniqueService : IDisposable, IAsyncDisposable
 	{
 		/// <summary>
 		/// Gets the unique name

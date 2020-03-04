@@ -8,9 +8,9 @@ using net.vieapps.Components.Security;
 namespace net.vieapps.Services
 {
 	/// <summary>
-	/// Presents a business service
+	/// Presents a business service in the VIEApps NGX
 	/// </summary>
-	public interface IService : IDisposable
+	public interface IService : IDisposable, IAsyncDisposable
 	{
 		/// <summary>
 		/// Gets the name
