@@ -7,10 +7,10 @@
 		<WarningLevel>3</WarningLevel>
 		<DocumentationFile>bin/$(Configuration)/$(TargetFramework)/VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<AssemblyTitle>VIEApps NGX Service Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.3.2003.2</AssemblyVersion>
-		<FileVersion>10.3.2003.2</FileVersion>
+		<AssemblyVersion>10.3.2003.3</AssemblyVersion>
+		<FileVersion>10.3.2003.3</FileVersion>
 		<InformationalVersion>10.3@$(TargetFramework)-lovely.4+build:2020.03.03+lts.targets</InformationalVersion>
-		<Version>10.3.2003.2</Version>
+		<Version>10.3.2003.3</Version>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
@@ -44,8 +44,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netcoreapp2.1'" />
 		<PackageReference Include="System.Reactive" Version="4.3.2" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.3.2003.2" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.3.2003.3" />
 		<PackageReference Include="WampSharp.Default.Client" Version="20.1.1" />
 	</ItemGroup>
 
