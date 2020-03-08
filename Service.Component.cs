@@ -24,7 +24,7 @@ namespace net.vieapps.Services
 		ILogger Logger { get; set; }
 
 		/// <summary>
-		/// Starts the service
+		/// Starts the service (the short way - connect to API Gateway and register the service)
 		/// </summary>
 		/// <param name="args">The arguments</param>
 		/// <param name="initializeRepository">true to initialize the repository of the service</param>
@@ -32,7 +32,7 @@ namespace net.vieapps.Services
 		Task StartAsync(string[] args = null, bool initializeRepository = true, Action<IService> next = null);
 
 		/// <summary>
-		/// Starts the service
+		/// Starts the service (the short way - connect to API Gateway and register the service)
 		/// </summary>
 		/// <param name="args">The arguments</param>
 		/// <param name="initializeRepository">true to initialize the repository of the service</param>
@@ -40,17 +40,35 @@ namespace net.vieapps.Services
 		void Start(string[] args = null, bool initializeRepository = true, Action<IService> next = null);
 
 		/// <summary>
-		/// Stops the service
+		/// Stops the service (unregister the service, disconnect from API Gateway and do the clean-up tasks)
 		/// </summary>
 		/// <param name="args">The arguments</param>
 		/// <param name="next">The next action to run when the service was stopped</param>
 		Task StopAsync(string[] args = null, Action<IService> next = null);
 
 		/// <summary>
-		/// Stops the service
+		/// Stops the service (unregister the service, disconnect from API Gateway and do the clean-up tasks)
 		/// </summary>
 		/// <param name="args">The arguments</param>
 		/// <param name="next">The next action to run when the service was stopped</param>
 		void Stop(string[] args = null, Action<IService> next = null);
+
+		/// <summary>
+		/// Disposes the service (unregister the service, disconnect from API Gateway and do the clean-up tasks)
+		/// </summary>
+		/// <param name="args">The arguments</param>
+		/// <param name="available">true to mark the service still available</param>
+		/// <param name="disconnect">true to disconnect from API Gateway Router and close all WAMP channels</param>
+		/// <param name="next">The next action to run when the service was disposed</param>
+		ValueTask DisposeAsync(string[] args, bool available = true, bool disconnect = true, Action<IService> next = null);
+
+		/// <summary>
+		/// Disposes the service (unregister the service, disconnect from API Gateway and do the clean-up tasks)
+		/// </summary>
+		/// <param name="args">The arguments</param>
+		/// <param name="available">true to mark the service still available</param>
+		/// <param name="disconnect">true to disconnect from API Gateway Router and close all WAMP channels</param>
+		/// <param name="next">The next action to run when the service was disposed</param>
+		void Dispose(string[] args, bool available = true, bool disconnect = true, Action<IService> next = null);
 	}
 }
