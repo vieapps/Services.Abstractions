@@ -9,6 +9,11 @@ namespace net.vieapps.Services
 	public interface IServiceComponent : IDisposable, IAsyncDisposable
 	{
 		/// <summary>
+		/// Gets the identity of the node
+		/// </summary>
+		string NodeID { get; }
+
+		/// <summary>
 		/// Gets the name
 		/// </summary>
 		string ServiceName { get; }

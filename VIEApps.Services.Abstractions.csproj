@@ -7,10 +7,10 @@
 		<RootNamespace>net.vieapps.Services</RootNamespace>
 		<AssemblyName>VIEApps.Services.Abstractions</AssemblyName>
 		<AssemblyTitle>VIEApps NGX Service Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.3.2004.1</AssemblyVersion>
-		<FileVersion>10.3.2004.1</FileVersion>
-		<Version>10.3.2004.1</Version>
-		<InformationalVersion>10.3.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#so.be.its</InformationalVersion>
+		<AssemblyVersion>10.3.2004.24</AssemblyVersion>
+		<FileVersion>10.3.2004.24</FileVersion>
+		<Version>10.3.2004.24</Version>
+		<InformationalVersion>10.3.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#special.day</InformationalVersion>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
@@ -28,7 +28,7 @@
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageOutputPath>../../Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>Improvement: upgrade to latest components</PackageReleaseNotes>
+		<PackageReleaseNotes>Improvement: add 'ExcludedNodeID' into inter-communicate message and upgrade to latest components on a special day</PackageReleaseNotes>
 		<PackageProjectUrl>https://vieapps.net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -45,8 +45,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netcoreapp2.1'" />
-		<PackageReference Include="System.Reactive" Version="4.3.2" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.3.2004.1" />
+		<PackageReference Include="System.Reactive" Version="4.4.1" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.3.2004.24" />
 		<PackageReference Include="WampSharp.Default.Client" Version="20.1.1" />
 	</ItemGroup>
 
