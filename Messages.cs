@@ -69,5 +69,10 @@ namespace net.vieapps.Services
 		/// Gets or sets name of the service that received and processed the message
 		/// </summary>
 		public string ServiceName { get; set; }
+
+		/// <summary>
+		/// Gets or sets the identity of excluded node
+		/// </summary>
+		public string ExcludedNodeID { get; set; } = "";
 	}
 }
