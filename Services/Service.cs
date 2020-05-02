@@ -42,12 +42,12 @@ namespace net.vieapps.Services
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="entityInfo">The identity of a specified business repository entity (means a business content-type at run-time) or type-name of an entity definition</param>
 		/// <param name="objectID">The identity of the object</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("services.{0}.privileges.manage")]
-		Task<bool> CanManageAsync(User user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default);
+		Task<bool> CanManageAsync(User user, string objectName, string systemID, string entityInfo, string objectID, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Determines the user is able to moderate or not
@@ -55,12 +55,12 @@ namespace net.vieapps.Services
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="entityInfo">The identity of a specified business repository entity (means a business content-type at run-time) or type-name of an entity definition</param>
 		/// <param name="objectID">The identity of the object</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("services.{0}.privileges.moderate")]
-		Task<bool> CanModerateAsync(User user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default);
+		Task<bool> CanModerateAsync(User user, string objectName, string systemID, string entityInfo, string objectID, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Determines the user is able to edit or not
@@ -68,12 +68,12 @@ namespace net.vieapps.Services
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="entityInfo">The identity of a specified business repository entity (means a business content-type at run-time) or type-name of an entity definition</param>
 		/// <param name="objectID">The identity of the object</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("services.{0}.privileges.edit")]
-		Task<bool> CanEditAsync(User user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default);
+		Task<bool> CanEditAsync(User user, string objectName, string systemID, string entityInfo, string objectID, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Determines the user is able to contribute or not
@@ -81,12 +81,12 @@ namespace net.vieapps.Services
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="entityInfo">The identity of a specified business repository entity (means a business content-type at run-time) or type-name of an entity definition</param>
 		/// <param name="objectID">The identity of the object</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("services.{0}.privileges.contribute")]
-		Task<bool> CanContributeAsync(User user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default);
+		Task<bool> CanContributeAsync(User user, string objectName, string systemID, string entityInfo, string objectID, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Determines the user is able to view or not
@@ -94,12 +94,12 @@ namespace net.vieapps.Services
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="entityInfo">The identity of a specified business repository entity (means a business content-type at run-time) or type-name of an entity definition</param>
 		/// <param name="objectID">The identity of the object</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("services.{0}.privileges.view")]
-		Task<bool> CanViewAsync(User user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default);
+		Task<bool> CanViewAsync(User user, string objectName, string systemID, string entityInfo, string objectID, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Determines the user is able to download or not
@@ -107,11 +107,11 @@ namespace net.vieapps.Services
 		/// <param name="user">The user who performs the action</param>
 		/// <param name="objectName">The name of the service's object</param>
 		/// <param name="systemID">The identity of the business system</param>
-		/// <param name="definitionID">The identity of the business entity definition</param>
+		/// <param name="entityInfo">The identity of a specified business repository entity (means a business content-type at run-time) or type-name of an entity definition</param>
 		/// <param name="objectID">The identity of the object</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns></returns>
 		[WampProcedure("services.{0}.privileges.download")]
-		Task<bool> CanDownloadAsync(User user, string objectName, string systemID, string definitionID, string objectID, CancellationToken cancellationToken = default);
+		Task<bool> CanDownloadAsync(User user, string objectName, string systemID, string entityInfo, string objectID, CancellationToken cancellationToken = default);
 	}
 }
