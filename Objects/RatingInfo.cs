@@ -7,7 +7,8 @@ namespace net.vieapps.Services
 	/// <summary>
 	/// Presents information of a rating
 	/// </summary>
-	[Serializable, DebuggerDisplay("Type = {Type}, Total = {Total}")]
+	[Serializable]
+	[DebuggerDisplay("Type = {Type}, Total = {Total}")]
 	public class RatingInfo : ServiceObjectBase
 	{
 		public RatingInfo() { }

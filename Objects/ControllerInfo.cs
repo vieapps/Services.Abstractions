@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using net.vieapps.Components.Utility;
 namespace net.vieapps.Services
@@ -7,6 +8,7 @@ namespace net.vieapps.Services
 	/// Presents information of a controller
 	/// </summary>
 	[Serializable]
+	[DebuggerDisplay("ID = {ID}, Info = {User} @ {Host}, Available = {Available}")]
 	public class ControllerInfo : ServiceObjectBase
 	{
 		public ControllerInfo() { }
