@@ -25,7 +25,7 @@ namespace net.vieapps.Services
 		{
 			this.SessionID = session?.SessionID ?? "";
 			this.User = session?.User ?? User.GetDefault(this.SessionID);
-			this.Verified = session != null ? session.Verified : false;
+			this.Verified = session != null && session.Verified;
 			this.DeviceID = session?.DeviceID ?? "";
 			this.IP = session?.IP ?? "";
 			this.DeveloperID = session?.DeveloperID ?? "";
