@@ -28,5 +28,14 @@ namespace net.vieapps.Services
 		/// <returns>The JSON object that contains the result</returns>
 		[WampProcedure("services.{0}")]
 		Task<JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Fetchs the contents of a temporary file
+		/// </summary>
+		/// <param name="requestInfo">The requesting information</param>
+		/// <param name="cancellationToken">The cancellation token</param>
+		/// <returns>The JSON object that contains the result</returns>
+		[WampProcedure("services.{0}.fetch.temporary.file")]
+		Task<JToken> FetchTemporaryFileAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 	}
 }
