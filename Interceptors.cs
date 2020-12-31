@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using WampSharp.V2;
 using WampSharp.V2.Core.Contracts;
 namespace net.vieapps.Services
