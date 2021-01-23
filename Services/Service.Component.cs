@@ -29,6 +29,11 @@ namespace net.vieapps.Services
 		ILogger Logger { get; set; }
 
 		/// <summary>
+		/// Gets the cancellation token
+		/// </summary>
+		System.Threading.CancellationToken CancellationToken { get; }
+
+		/// <summary>
 		/// Starts the service (the short way - connect to API Gateway and register the service)
 		/// </summary>
 		/// <param name="args">The arguments</param>
