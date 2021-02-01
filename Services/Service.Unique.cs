@@ -21,13 +21,22 @@ namespace net.vieapps.Services
 		string ServiceUniqueURI { get; }
 
 		/// <summary>
-		/// Processes the request
+		/// Processes a request
 		/// </summary>
 		/// <param name="requestInfo">The requesting information</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns>The JSON object that contains the result</returns>
 		[WampProcedure("services.{0}")]
 		Task<JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Processes a web-hook message
+		/// </summary>
+		/// <param name="requestInfo">The requesting information</param>
+		/// <param name="cancellationToken">The cancellation token</param>
+		/// <returns></returns>
+		[WampProcedure("services.{0}.webhook")]
+		Task ProcessWebHookMessageAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Fetchs the contents of a temporary file

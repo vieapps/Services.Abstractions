@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using WampSharp.V2.Rpc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
+using WampSharp.V2.Rpc;
 using net.vieapps.Components.Security;
 namespace net.vieapps.Services
 {
@@ -28,13 +28,22 @@ namespace net.vieapps.Services
 		ILogger Logger { get; }
 
 		/// <summary>
-		/// Processes the request
+		/// Processes a request
 		/// </summary>
 		/// <param name="requestInfo">The requesting information</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns>The JSON object that contains the result</returns>
 		[WampProcedure("services.{0}")]
 		Task<JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Processes a web-hook message
+		/// </summary>
+		/// <param name="requestInfo">The requesting information</param>
+		/// <param name="cancellationToken">The cancellation token</param>
+		/// <returns></returns>
+		[WampProcedure("services.{0}.webhook")]
+		Task ProcessWebHookMessageAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Determines the user is able to manage or not
