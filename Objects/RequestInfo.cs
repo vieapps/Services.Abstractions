@@ -11,7 +11,6 @@ namespace net.vieapps.Services
 	/// <summary>
 	/// Presents the requesting information of a service
 	/// </summary>
-	[Serializable]
 	public class RequestInfo : ServiceObjectBase
 	{
 		/// <summary>

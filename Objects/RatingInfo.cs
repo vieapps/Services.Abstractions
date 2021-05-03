@@ -1,13 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using net.vieapps.Components.Utility;
-
+﻿using System.Diagnostics;
 namespace net.vieapps.Services
 {
 	/// <summary>
 	/// Presents information of a rating
 	/// </summary>
-	[Serializable]
 	[DebuggerDisplay("Type = {Type}, Total = {Total}")]
 	public class RatingInfo : ServiceObjectBase
 	{

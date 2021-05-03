@@ -1,14 +1,10 @@
-﻿using System;
-using System.Diagnostics;
-using net.vieapps.Components.Security;
-using net.vieapps.Components.Utility;
+﻿using net.vieapps.Components.Security;
 namespace net.vieapps.Services
 {
 	/// <summary>
 	/// Presents a working session
 	/// </summary>
-	[Serializable]
-	[DebuggerDisplay("ID = {SessionID}, IP = {IP}")]
+	[System.Diagnostics.DebuggerDisplay("ID = {SessionID}, IP = {IP}")]
 	public class Session : ServiceObjectBase
 	{
 		/// <summary>

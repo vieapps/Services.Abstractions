@@ -1,13 +1,8 @@
-﻿using System;
-using System.Diagnostics;
-using net.vieapps.Components.Utility;
-
-namespace net.vieapps.Services
+﻿namespace net.vieapps.Services
 {
 	/// <summary>
 	/// Presents information of a statistic
 	/// </summary>
-	[Serializable]
 	public class StatisticInfo : ServiceObjectBase
 	{
 		public StatisticInfo() { }

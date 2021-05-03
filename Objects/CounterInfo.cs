@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
-using net.vieapps.Components.Utility;
-
 namespace net.vieapps.Services
 {
 	/// <summary>
 	/// Presents information of a base counter
 	/// </summary>
-	[Serializable]
 	[DebuggerDisplay("Type = {Type}, Total = {Total}")]
 	public class CounterBase : ServiceObjectBase
 	{
@@ -29,7 +26,6 @@ namespace net.vieapps.Services
 	/// <summary>
 	/// Presents information of a counter of an object
 	/// </summary>
-	[Serializable]
 	public class CounterInfo : CounterBase
 	{
 		public CounterInfo()

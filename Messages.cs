@@ -1,11 +1,9 @@
-﻿using System;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 namespace net.vieapps.Services
 {
 	/// <summary>
 	/// Presents a base message for updating information
 	/// </summary>
-	[Serializable]
 	public class BaseMessage
 	{
 		public BaseMessage() { }
@@ -26,7 +24,6 @@ namespace net.vieapps.Services
 	/// <summary>
 	/// Presents a message for updating via RTU (Real-Time Update)
 	/// </summary>
-	[Serializable]
 	public class UpdateMessage : BaseMessage
 	{
 		public UpdateMessage() : this(null) { }
@@ -53,7 +50,6 @@ namespace net.vieapps.Services
 	/// <summary>
 	/// Presents a message for communicating between services
 	/// </summary>
-	[Serializable]
 	public class CommunicateMessage : BaseMessage
 	{
 		public CommunicateMessage() : this(null) { }

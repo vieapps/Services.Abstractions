@@ -1,11 +1,9 @@
 ﻿using System;
-using net.vieapps.Components.Utility;
 namespace net.vieapps.Services
 {
 	/// <summary>
 	/// Presents information of a service
 	/// </summary>
-	[Serializable]
 	public class ServiceInfo : ServiceObjectBase
 	{
 		public ServiceInfo() { }

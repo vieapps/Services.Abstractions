@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using WampSharp.V2.Rpc;
 using Newtonsoft.Json.Linq;

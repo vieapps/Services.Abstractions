@@ -3,7 +3,6 @@
 	/// <summary>
 	/// Presents the state of a service
 	/// </summary>
-	[System.Serializable]
 	public enum ServiceState
 	{
 		/// <summary>
