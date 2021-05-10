@@ -38,19 +38,5 @@ namespace net.vieapps.Services
 		/// <returns></returns>
 		[WampProcedure("services.logging.multiple")]
 		Task WriteLogsAsync(string correlationID, string developerID, string appID, string serviceName, string objectName, List<string> logs, string stack = null, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Fetchs the logs from centralized log storage
-		/// </summary>
-		/// <param name="pageNumber">The page number</param>
-		/// <param name="pageSize">The page size</param>
-		/// <param name="correlationID">The identity of correlation</param>
-		/// <param name="developerID">The identity of the developer</param>
-		/// <param name="appID">The identity of the app</param>
-		/// <param name="serviceName">The name of service</param>
-		/// <param name="objectName">The name of serivice's object</param>
-		/// <param name="cancellationToken">The cancellation token</param>
-		[WampProcedure("services.logging.fetch")]
-		Task<Newtonsoft.Json.Linq.JToken> FetchLogsAsync(int pageNumber = 1, int pageSize = 100, string correlationID = null, string developerID = null, string appID = null, string serviceName = null, string objectName = null, CancellationToken cancellationToken = default);
 	}
 }
