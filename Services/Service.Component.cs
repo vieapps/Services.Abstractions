@@ -83,6 +83,12 @@ namespace net.vieapps.Services
 		void Stop(string[] args = null, Action<IService> next = null);
 
 		/// <summary>
+		/// Does the synchronous work when the service starts with '/do-sync-work' argument
+		/// </summary>
+		/// <param name="args">The arguments</param>
+		void DoWork(string[] args = null);
+
+		/// <summary>
 		/// Disposes the service (unregister the service, disconnect from API Gateway and do the clean-up tasks)
 		/// </summary>
 		/// <param name="args">The arguments</param>
