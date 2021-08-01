@@ -3,14 +3,14 @@
 	<PropertyGroup>
 		<TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
 		<WarningLevel>3</WarningLevel>
-		<NoWarn>1573,1591</NoWarn>
+		<NoWarn>1573,1591,IDE0090</NoWarn>
 		<DocumentationFile>bin/$(Configuration)/$(TargetFramework)/VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<RootNamespace>net.vieapps.Services</RootNamespace>
 		<AssemblyName>VIEApps.Services.Abstractions</AssemblyName>
 		<AssemblyTitle>VIEApps NGX Service Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.4.2108.1</AssemblyVersion>
-		<FileVersion>10.4.2108.1</FileVersion>
-		<Version>10.4.2108.1</Version>
+		<AssemblyVersion>10.4.2108.2</AssemblyVersion>
+		<FileVersion>10.4.2108.2</FileVersion>
+		<Version>10.4.2108.2</Version>
 		<InformationalVersion>10.4.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#let.it.be</InformationalVersion>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
@@ -47,7 +47,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="5.0.0" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
 		<PackageReference Include="System.Reactive" Version="5.0.0" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.4.2108.1" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.4.2108.2" />
 		<PackageReference Include="WampSharp.Default.Client" Version="20.1.1" />
 	</ItemGroup>
 
