@@ -41,8 +41,8 @@ namespace net.vieapps.Services
 		public RequestInfo(Session session, string serviceName, string objectName = null, string verb = null, Dictionary<string, string> query = null, Dictionary<string, string> header = null, string body = null, Dictionary<string, string> extra = null, string correlationID = null)
 		{
 			this.Session = new Session(session);
-			this.ServiceName = (serviceName ?? "unknown").ToLower();
-			this.ObjectName = (objectName ?? "").Trim().ToLower();
+			this.ServiceName = (serviceName ?? "unknown").GetCapitalizedFirstLetter();
+			this.ObjectName = (objectName ?? "").Trim().GetCapitalizedFirstLetter();
 			this.Verb = (verb ?? "GET").Trim().ToUpper();
 			this.Query = new Dictionary<string, string>(query ?? new Dictionary<string, string>(), StringComparer.OrdinalIgnoreCase);
 			this.Header = new Dictionary<string, string>(header ?? new Dictionary<string, string>(), StringComparer.OrdinalIgnoreCase);
@@ -120,6 +120,26 @@ namespace net.vieapps.Services
 		/// </summary>
 		[JsonIgnore, XmlIgnore]
 		public ExpandoObject BodyAsExpandoObject => this.Body?.ToExpandoObject() ?? new ExpandoObject();
+
+		/// <summary>
+		/// Gets the object as JSON object
+		/// </summary>
+		[JsonIgnore, XmlIgnore]
+		public JToken AsJson => this.ToJson(data =>
+		{
+			data["Body"] = this.BodyAsJson;
+			data.Get<JObject>("Header")?.Remove("x-app-token");
+		});
+
+		/// <summary>
+		/// Gets the object as ExpandoObject object
+		/// </summary>
+		[JsonIgnore, XmlIgnore]
+		public ExpandoObject AsExpandoObject => this.ToExpandoObject(data =>
+		{
+			data.Set("Body", this.BodyAsExpandoObject);
+			data.Get<ExpandoObject>("Header")?.Remove("x-app-token");
+		});
 		#endregion
 
 	}
