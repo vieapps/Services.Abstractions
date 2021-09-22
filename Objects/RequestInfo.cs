@@ -125,20 +125,20 @@ namespace net.vieapps.Services
 		/// Gets the object as JSON object
 		/// </summary>
 		[JsonIgnore, XmlIgnore]
-		public JToken AsJson => this.ToJson(data =>
+		public JToken AsJson => this.ToJson(json =>
 		{
-			data["Body"] = this.BodyAsJson;
-			data.Get<JObject>("Header")?.Remove("x-app-token");
+			json["Body"] = this.BodyAsJson;
+			json.Get<JObject>("Header")?.Remove("x-app-token");
 		});
 
 		/// <summary>
 		/// Gets the object as ExpandoObject object
 		/// </summary>
 		[JsonIgnore, XmlIgnore]
-		public ExpandoObject AsExpandoObject => this.ToExpandoObject(data =>
+		public ExpandoObject AsExpandoObject => this.ToExpandoObject(expando =>
 		{
-			data.Set("Body", this.BodyAsExpandoObject);
-			data.Get<ExpandoObject>("Header")?.Remove("x-app-token");
+			expando.Set("Body", this.BodyAsExpandoObject);
+			expando.Get<ExpandoObject>("Header")?.Remove("x-app-token");
 		});
 		#endregion
 
