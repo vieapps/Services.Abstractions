@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net5.0;netstandard2.0</TargetFrameworks>
 		<WarningLevel>3</WarningLevel>
 		<NoWarn>1573,1591,IDE0090</NoWarn>
 		<DocumentationFile>bin/$(Configuration)/$(TargetFramework)/VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<RootNamespace>net.vieapps.Services</RootNamespace>
 		<AssemblyName>VIEApps.Services.Abstractions</AssemblyName>
 		<AssemblyTitle>VIEApps NGX Service Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.4.2109.7</AssemblyVersion>
-		<FileVersion>10.4.2109.7</FileVersion>
-		<Version>10.4.2109.7</Version>
-		<InformationalVersion>10.4.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#let.it.be</InformationalVersion>
+		<AssemblyVersion>10.5.2201.2</AssemblyVersion>
+		<FileVersion>10.5.2201.2</FileVersion>
+		<Version>10.5.2201.2</Version>
+		<InformationalVersion>10.5.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#let.it.be</InformationalVersion>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
 		<Company>VIEApps.net</Company>
 		<Product>VIEApps NGX</Product>
-		<Copyright>© 2021 VIEApps.net</Copyright>
+		<Copyright>© $([System.DateTime]::Now.Year) VIEApps.net</Copyright>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
@@ -29,7 +29,7 @@
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageOutputPath>../../Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>Improv: as json/expando</PackageReleaseNotes>
+		<PackageReleaseNotes>.NET 6.0</PackageReleaseNotes>
 		<PackageProjectUrl>https://vieapps.net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -45,9 +45,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="5.0.0" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
 		<PackageReference Include="System.Reactive" Version="5.0.0" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.4.2109.7" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.5.2201.1" />
 		<PackageReference Include="WampSharp.Default.Client" Version="20.1.1" />
 	</ItemGroup>
 
