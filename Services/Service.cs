@@ -37,6 +37,15 @@ namespace net.vieapps.Services
 		Task<JToken> ProcessRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Processes a request for rolling-back a service's object
+		/// </summary>
+		/// <param name="requestInfo">The requesting information</param>
+		/// <param name="cancellationToken">The cancellation token</param>
+		/// <returns></returns>
+		[WampProcedure("services.{0}.rollback")]
+		Task<JToken> ProcessRollbackRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Processes a web-hook message
 		/// </summary>
 		/// <param name="requestInfo">The requesting information</param>

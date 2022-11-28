@@ -51,7 +51,6 @@ namespace net.vieapps.Services
 			this.CorrelationID = string.IsNullOrWhiteSpace(correlationID) ? UtilityService.NewUUID : correlationID;
 		}
 
-		#region Properties
 		/// <summary>
 		/// Gets or sets the session
 		/// </summary>
@@ -127,7 +126,17 @@ namespace net.vieapps.Services
 		[JsonIgnore, XmlIgnore]
 		public JToken AsJson => this.ToJson(json =>
 		{
-			json["Body"] = this.BodyAsJson;
+			try
+			{
+				json["Body"] = this.BodyAsJson;
+			}
+			catch
+			{
+				json["Body"] = new JObject
+				{
+					["_original"] = this.Body
+				};
+			}
 			json.Get<JObject>("Header")?.Remove("x-app-token");
 		});
 
@@ -137,10 +146,18 @@ namespace net.vieapps.Services
 		[JsonIgnore, XmlIgnore]
 		public ExpandoObject AsExpandoObject => this.ToExpandoObject(expando =>
 		{
-			expando.Set("Body", this.BodyAsExpandoObject);
+			try
+			{
+				expando.Set("Body", this.BodyAsExpandoObject);
+			}
+			catch
+			{
+				expando.Set("Body", new JObject
+				{
+					["_original"] = this.Body
+				}.ToExpandoObject());
+			}
 			expando.Get<ExpandoObject>("Header")?.Remove("x-app-token");
 		});
-		#endregion
-
 	}
 }
