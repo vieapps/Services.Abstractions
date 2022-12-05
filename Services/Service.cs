@@ -46,6 +46,15 @@ namespace net.vieapps.Services
 		Task<JToken> ProcessRollbackRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Processes a request for restoring back a service's object that was be deleted
+		/// </summary>
+		/// <param name="requestInfo">The requesting information</param>
+		/// <param name="cancellationToken">The cancellation token</param>
+		/// <returns></returns>
+		[WampProcedure("services.{0}.restore")]
+		Task<JToken> ProcessRestoreRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Processes a web-hook message
 		/// </summary>
 		/// <param name="requestInfo">The requesting information</param>
