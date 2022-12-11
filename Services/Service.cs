@@ -41,7 +41,7 @@ namespace net.vieapps.Services
 		/// </summary>
 		/// <param name="requestInfo">The requesting information</param>
 		/// <param name="cancellationToken">The cancellation token</param>
-		/// <returns></returns>
+		/// <returns>The JSON object that contains the result</returns>
 		[WampProcedure("services.{0}.rollback")]
 		Task<JToken> ProcessRollbackRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 
@@ -50,7 +50,7 @@ namespace net.vieapps.Services
 		/// </summary>
 		/// <param name="requestInfo">The requesting information</param>
 		/// <param name="cancellationToken">The cancellation token</param>
-		/// <returns></returns>
+		/// <returns>The JSON object that contains the result</returns>
 		[WampProcedure("services.{0}.restore")]
 		Task<JToken> ProcessRestoreRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 
