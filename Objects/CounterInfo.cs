@@ -28,8 +28,7 @@ namespace net.vieapps.Services
 	/// </summary>
 	public class CounterInfo : CounterBase
 	{
-		public CounterInfo()
-			: base() { }
+		public CounterInfo() : base() { }
 
 		/// <summary>
 		/// Gets or sets the last updated time

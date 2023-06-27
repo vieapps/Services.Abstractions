@@ -57,6 +57,11 @@ namespace net.vieapps.Services
 		string Tags { get; set; }
 
 		/// <summary>
+		/// Gets or Sets the identity of categories
+		/// </summary>
+		string Categories { get; set; }
+
+		/// <summary>
 		/// Gets or Sets the last-updated time
 		/// </summary>
 		DateTime LastUpdated { get; set; }
