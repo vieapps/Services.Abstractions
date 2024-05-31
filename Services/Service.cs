@@ -59,9 +59,9 @@ namespace net.vieapps.Services
 		/// </summary>
 		/// <param name="requestInfo">The requesting information</param>
 		/// <param name="cancellationToken">The cancellation token</param>
-		/// <returns></returns>
+		/// <returns>The JSON object that contains the response</returns>
 		[WampProcedure("services.{0}.webhook")]
-		Task ProcessWebHookMessageAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
+		Task<JToken> ProcessWebHookMessageAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Determines the user is able to manage or not

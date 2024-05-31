@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Dynamic;
 using System.Globalization;
 using System.Collections.Generic;
@@ -132,10 +133,14 @@ namespace net.vieapps.Services
 			}
 			catch
 			{
-				json["Body"] = new JObject
+				try
 				{
-					["_original"] = this.Body
-				};
+					json["Body"] = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(this.Body).ToDictionary(kvp => kvp.Key.ToLower(), kvp => kvp.Value.Where(@string => @string != null).Select(@string => @string.AsciiDecode()).Join(","), StringComparer.OrdinalIgnoreCase).ToJObject();
+				}
+				catch
+				{
+					json["Body"] = new JObject { ["_original"] = this.Body ?? "" };
+				}
 			}
 			json.Get<JObject>("Header")?.Remove("x-app-token");
 		});
