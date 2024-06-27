@@ -113,7 +113,30 @@ namespace net.vieapps.Services
 		/// Gets the body as JSON object
 		/// </summary>
 		[JsonIgnore, XmlIgnore]
-		public JToken BodyAsJson => this.Body?.ToJson() ?? new JObject();
+		public JToken BodyAsJson
+		{
+			get
+			{
+				JToken json = new JObject();
+				if (!string.IsNullOrWhiteSpace(this.Body))
+					try
+					{
+							json = this.Body.ToJson();
+					}
+						catch
+					{
+						try
+						{
+							json = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(this.Body).ToDictionary(kvp => kvp.Key.ToLower(), kvp => kvp.Value.Where(@string => @string != null).Select(@string => @string.AsciiDecode()).Join(","), StringComparer.OrdinalIgnoreCase).ToJObject();
+						}
+						catch
+						{
+							json = new JObject { ["_original"] = this.Body ?? "" };
+						}
+					}
+				return json;
+			}
+		}
 
 		/// <summary>
 		/// Gets the body as ExpandoObject object
@@ -127,21 +150,7 @@ namespace net.vieapps.Services
 		[JsonIgnore, XmlIgnore]
 		public JToken AsJson => this.ToJson(json =>
 		{
-			try
-			{
-				json["Body"] = this.BodyAsJson;
-			}
-			catch
-			{
-				try
-				{
-					json["Body"] = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(this.Body).ToDictionary(kvp => kvp.Key.ToLower(), kvp => kvp.Value.Where(@string => @string != null).Select(@string => @string.AsciiDecode()).Join(","), StringComparer.OrdinalIgnoreCase).ToJObject();
-				}
-				catch
-				{
-					json["Body"] = new JObject { ["_original"] = this.Body ?? "" };
-				}
-			}
+			json["Body"] = this.BodyAsJson;
 			json.Get<JObject>("Header")?.Remove("x-app-token");
 		});
 
@@ -149,20 +158,6 @@ namespace net.vieapps.Services
 		/// Gets the object as ExpandoObject object
 		/// </summary>
 		[JsonIgnore, XmlIgnore]
-		public ExpandoObject AsExpandoObject => this.ToExpandoObject(expando =>
-		{
-			try
-			{
-				expando.Set("Body", this.BodyAsExpandoObject);
-			}
-			catch
-			{
-				expando.Set("Body", new JObject
-				{
-					["_original"] = this.Body
-				}.ToExpandoObject());
-			}
-			expando.Get<ExpandoObject>("Header")?.Remove("x-app-token");
-		});
+		public ExpandoObject AsExpandoObject => this.ToJson().ToExpandoObject();
 	}
 }

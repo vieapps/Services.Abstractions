@@ -8,10 +8,10 @@
 		<RootNamespace>net.vieapps.Services</RootNamespace>
 		<AssemblyName>VIEApps.Services.Abstractions</AssemblyName>
 		<AssemblyTitle>VIEApps NGX Service Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.8.2406.4</AssemblyVersion>
-		<FileVersion>10.8.2406.4</FileVersion>
-		<Version>10.8.2406.4</Version>
-		<InformationalVersion>10.8.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#next.year</InformationalVersion>
+		<AssemblyVersion>10.8.2407.1</AssemblyVersion>
+		<FileVersion>10.8.2407.1</FileVersion>
+		<Version>10.8.2407.1</Version>
+		<InformationalVersion>10.8.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#2nd.year</InformationalVersion>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
@@ -29,7 +29,7 @@
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageOutputPath>../../Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>next year (latest components)</PackageReleaseNotes>
+		<PackageReleaseNotes>2nd year (latest components)</PackageReleaseNotes>
 		<PackageProjectUrl>https://vieapps.net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -54,8 +54,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="System.Reactive" Version="6.0.1" />
-		<PackageReference Include="VIEApps.Components.Caching" Version="10.8.2406.2" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.8.2406.2" />
+		<PackageReference Include="VIEApps.Components.Caching" Version="10.8.2407.1" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.8.2407.1" />
 		<PackageReference Include="WampSharp.Default.Client" Version="23.8.1" />
 	</ItemGroup>
 
