@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
+		<TargetFrameworks>net9.0;netstandard2.0</TargetFrameworks>
 		<WarningLevel>3</WarningLevel>
-		<NoWarn>1573,1591,IDE0090</NoWarn>
+		<NoWarn>1573,1591,IDE0090,IDE0130</NoWarn>
 		<DocumentationFile>bin/$(Configuration)/$(TargetFramework)/VIEApps.Services.Abstractions.xml</DocumentationFile>
 		<RootNamespace>net.vieapps.Services</RootNamespace>
 		<AssemblyName>VIEApps.Services.Abstractions</AssemblyName>
 		<AssemblyTitle>VIEApps NGX Service Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.8.2407.1</AssemblyVersion>
-		<FileVersion>10.8.2407.1</FileVersion>
-		<Version>10.8.2407.1</Version>
-		<InformationalVersion>10.8.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#2nd.year</InformationalVersion>
+		<AssemblyVersion>10.9.2412.1</AssemblyVersion>
+		<FileVersion>10.9.2412.1</FileVersion>
+		<Version>10.9.2412.1</Version>
+		<InformationalVersion>10.9.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#2nd.year</InformationalVersion>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
 		<Authors>VIEApps.net</Authors>
@@ -26,10 +26,11 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PackageId>VIEApps.Services.Abstractions</PackageId>
 		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageOutputPath>../../Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>2nd year (latest components)</PackageReleaseNotes>
+		<PackageReleaseNotes>Add supported of .NET 9</PackageReleaseNotes>
 		<PackageProjectUrl>https://vieapps.net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -45,7 +46,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
-		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="9.0.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
@@ -54,8 +55,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="System.Reactive" Version="6.0.1" />
-		<PackageReference Include="VIEApps.Components.Caching" Version="10.8.2407.1" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.8.2407.1" />
+		<PackageReference Include="VIEApps.Components.Caching" Version="10.9.2412.1" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.9.2412.1" />
 		<PackageReference Include="WampSharp.Default.Client" Version="23.8.1" />
 	</ItemGroup>
 
