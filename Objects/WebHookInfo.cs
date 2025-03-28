@@ -17,6 +17,10 @@ namespace net.vieapps.Services
 
 		public bool SignatureAsHex { get; set; } = true;
 
+		public string SignaturePrefix { get; set; }
+
+		public string SignatureSuffix { get; set; }
+
 		public string Query { get; set; }
 
 		public string Header { get; set; }
