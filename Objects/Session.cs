@@ -1,4 +1,6 @@
-﻿using net.vieapps.Components.Security;
+﻿using Newtonsoft.Json.Linq;
+using net.vieapps.Components.Security;
+using net.vieapps.Components.Utility;
 namespace net.vieapps.Services
 {
 	/// <summary>
@@ -10,8 +12,7 @@ namespace net.vieapps.Services
 		/// <summary>
 		/// Initializes a new session
 		/// </summary>
-		public Session()
-			: this(null) { }
+		public Session() { }
 
 		/// <summary>
 		/// Initializes a new session
@@ -31,6 +32,25 @@ namespace net.vieapps.Services
 			this.AppAgent = session?.AppAgent ?? "";
 			this.AppOrigin = session?.AppOrigin ?? "";
 			this.AppMode = session?.AppMode ?? "Client";
+		}
+
+		/// <summary>
+		/// Initializes a new session
+		/// </summary>
+		/// <param name="session"></param>
+		public Session(JObject session)
+			=> this.Fill(session);
+
+		/// <summary>
+		/// Fills data into this session object
+		/// </summary>
+		/// <param name="session"></param>
+		/// <returns></returns>
+		public Session Fill(JObject session)
+		{
+			if (session != null)
+				this.CopyFrom(session);
+			return this;
 		}
 
 		#region Properties
