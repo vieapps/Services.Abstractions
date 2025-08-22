@@ -21,6 +21,12 @@ namespace net.vieapps.Services
 
 		public string SignatureSuffix { get; set; }
 
+		public bool SignWithTimestamp { get; set; } = false;
+
+		public string SignWithTimestampName { get; set; }
+
+		public string SignWithTimestampConnect { get; set; }
+
 		public string Query { get; set; }
 
 		public string Header { get; set; }

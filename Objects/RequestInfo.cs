@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Dynamic;
 using System.Globalization;
 using System.Collections.Generic;
@@ -113,30 +112,7 @@ namespace net.vieapps.Services
 		/// Gets the body as JSON object
 		/// </summary>
 		[JsonIgnore, XmlIgnore]
-		public JToken BodyAsJson
-		{
-			get
-			{
-				JToken json = new JObject();
-				if (!string.IsNullOrWhiteSpace(this.Body))
-					try
-					{
-							json = this.Body.ToJson();
-					}
-						catch
-					{
-						try
-						{
-							json = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(this.Body).ToDictionary(kvp => kvp.Key.ToLower(), kvp => kvp.Value.Where(@string => @string != null).Select(@string => @string.AsciiDecode()).Join(","), StringComparer.OrdinalIgnoreCase).ToJObject();
-						}
-						catch
-						{
-							json = new JObject { ["_original"] = this.Body ?? "" };
-						}
-					}
-				return json;
-			}
-		}
+		public JToken BodyAsJson => this.Body.ToJSON();		
 
 		/// <summary>
 		/// Gets the body as ExpandoObject object
