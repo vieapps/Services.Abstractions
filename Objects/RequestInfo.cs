@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Dynamic;
 using System.Globalization;
-using System.Collections.Generic;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using net.vieapps.Components.Utility;
@@ -112,7 +112,7 @@ namespace net.vieapps.Services
 		/// Gets the body as JSON object
 		/// </summary>
 		[JsonIgnore, XmlIgnore]
-		public JToken BodyAsJson => this.Body.ToJSON();		
+		public JToken BodyAsJson => (this.Body ?? "{}").ToJSON();		
 
 		/// <summary>
 		/// Gets the body as ExpandoObject object
