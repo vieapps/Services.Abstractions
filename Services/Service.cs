@@ -64,6 +64,15 @@ namespace net.vieapps.Services
 		Task<JToken> ProcessWebHookMessageAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Processes the request of MCP (model context protocol)
+		/// </summary>
+		/// <param name="requestInfo">The requesting information</param>
+		/// <param name="cancellationToken">The cancellation token</param>
+		/// <returns>The JSON object that contains the result</returns>
+		[WampProcedure("services.{0}.mcp")]
+		Task<JToken> ProcessMcpRequestAsync(RequestInfo requestInfo, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Determines the user is able to manage or not
 		/// </summary>
 		/// <param name="user">The user who performs the action</param>
