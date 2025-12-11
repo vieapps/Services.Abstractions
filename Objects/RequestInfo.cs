@@ -118,7 +118,7 @@ namespace net.vieapps.Services
 		/// Gets the body as ExpandoObject object
 		/// </summary>
 		[JsonIgnore, XmlIgnore]
-		public ExpandoObject BodyAsExpandoObject => this.Body?.ToExpandoObject() ?? new ExpandoObject();
+		public ExpandoObject BodyAsExpandoObject => this.BodyAsJson.ToExpandoObject();
 
 		/// <summary>
 		/// Gets the object as JSON object
