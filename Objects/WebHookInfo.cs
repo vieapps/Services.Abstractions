@@ -37,6 +37,8 @@ namespace net.vieapps.Services
 
 		public string PrepareBodyScript { get; set; }
 
+		public int PrepareBodyScriptTimeout { get; set; } = 0;
+
 		[JsonIgnore, MessagePackIgnore]
 		public JObject QueryAsJson => string.IsNullOrWhiteSpace(this.Query) ? null : JObject.Parse(this.Query);
 
