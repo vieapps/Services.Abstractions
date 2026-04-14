@@ -55,10 +55,12 @@ namespace net.vieapps.Services
 		public long CacheL1Hit200;
 		public long CacheL1Miss;
 		public double CacheL1HitRatio;
+		public double CacheL1MissRatio;
 		public long CacheL2Hit304;
 		public long CacheL2Hit200;
 		public long CacheL2Miss;
 		public double CacheL2HitRatio;
+		public double CacheL2MissRatio;
 
 		public long RpcGateCurrent;
 		public long RpcGateAvailable;
@@ -94,7 +96,7 @@ namespace net.vieapps.Services
 			return (forAggregate, forReUpdate);
 		}
 
-		public static IEnumerable<StatisticMessage> Aggregate(this IEnumerable<IGrouping<string, StatisticMessage>> messagesGroups)
+		static IEnumerable<StatisticMessage> Aggregate(this IEnumerable<IGrouping<string, StatisticMessage>> messagesGroups)
 		{
 			var statistics = new List<StatisticMessage>();
 
@@ -120,10 +122,8 @@ namespace net.vieapps.Services
 				long rpcTotalCompleted = 0, rpcMaxLatency = 0;
 
 				var useL1Cache = false;
-				var numberOfMessages = 0;
 				foreach (var message in messagesGroup)
 				{
-					numberOfMessages++;
 					useL1Cache = useL1Cache || message.UseL1Cache;
 
 					threadpoolWorkers += message.ThreadPoolWorkers;
@@ -172,7 +172,7 @@ namespace net.vieapps.Services
 
 				var serviceName = messagesGroup.Key;
 				var numberOfNodes = messagesGroup.Select(msg => msg.NodeID).Distinct(StringComparer.OrdinalIgnoreCase).Count();
-				var rpcAverageLatency = rpcTotalCompleted > 0	? rpcWeightedLatency / rpcTotalCompleted : 0;
+				var rpcAverageLatency = rpcTotalCompleted > 0 ? rpcWeightedLatency / rpcTotalCompleted : 0;
 
 				statistics.Add(new StatisticMessage
 				{
@@ -198,12 +198,12 @@ namespace net.vieapps.Services
 					CacheL1Hit200 = cacheL1Hit200,
 					CacheL1Miss = cacheL1Miss,
 					CacheL1HitRatio = requestsTotal > 0 ? (cacheL1Hit304 + cacheL1Hit200) * 100.0 / requestsTotal : 0,
+					CacheL1MissRatio = requestsTotal > 0 ? cacheL1Miss * 100.0 / requestsTotal : 0,
 					CacheL2Hit304 = cacheL2Hit304,
 					CacheL2Hit200 = cacheL2Hit200,
 					CacheL2Miss = cacheL2Miss,
-					CacheL2HitRatio = useL1Cache
-						? cacheL1Miss > 0 ? (cacheL2Hit304 + cacheL2Hit200) * 100.0 / cacheL1Miss : 0
-						: requestsTotal > 0 ? (cacheL2Hit304 + cacheL2Hit200) * 100.0 / requestsTotal : 0,
+					CacheL2HitRatio = requestsTotal > 0 ? (cacheL2Hit304 + cacheL2Hit200) * 100.0 / requestsTotal : 0,
+					CacheL2MissRatio = requestsTotal > 0 ? cacheL2Miss * 100.0 / requestsTotal : 0,
 
 					RpcGateCurrent = rpcGateCurrent,
 					RpcGateAvailable = rpcGateAvailable / numberOfNodes,
@@ -224,9 +224,9 @@ namespace net.vieapps.Services
 			return statistics;
 		}
 
-		public static JObject Aggregate(this IEnumerable<StatisticMessage> messages, Action<JObject> onCompleted = null)
+		static (JToken ServicesJson, JToken ThreadPoolJson, JToken CacheJson, JToken RouterJson) Aggregate(this IEnumerable<StatisticMessage> messages, IEnumerable<IGrouping<string, StatisticMessage>> messagesGroups, bool addNodes)
 		{
-			var statistics = messages.GroupBy(message => message.ServiceName).Aggregate();
+			var statistics = messagesGroups.Aggregate();
 			var numberOfNodes = messages.Select(message => message.NodeID).Distinct().Count();
 			var cacheStatuses = statistics.Where(message => message.CacheStatus != "OK");
 			var nodeMax = messages.GroupBy(message => message.NodeID).Select(group => new
@@ -243,7 +243,7 @@ namespace net.vieapps.Services
 
 			var nodeMaxID = nodeMax.NodeID;
 			var nodeMaxWorkers = nodeMax.Workers;
-			var nodeMaxUsage = messages.GroupBy(message => message.NodeID).Select(group => group.Max(msg => msg.ThreadPoolMaxWorkers > 0 ? msg.ThreadPoolWorkers * 1.0 / msg.ThreadPoolMaxWorkers	: 0)).Max();
+			var nodeMaxUsage = messages.GroupBy(message => message.NodeID).Select(group => group.Max(msg => msg.ThreadPoolMaxWorkers > 0 ? msg.ThreadPoolWorkers * 1.0 / msg.ThreadPoolMaxWorkers : 0)).Max();
 
 			var cacheProvider = statistics.First().CacheProvider;
 			var cacheStatus = (cacheStatuses.FirstOrDefault(message => message.CacheStatus == "🔥CRITICAL") ?? cacheStatuses.FirstOrDefault(message => message.CacheStatus == "⚠️WARN"))?.CacheStatus ?? "OK";
@@ -274,83 +274,107 @@ namespace net.vieapps.Services
 			var rpcAverageLatency = rpcTotalCompleted > 0 ? rpcWeightedLatency / rpcTotalCompleted : 0;
 			var rpcMaxLatency = statistics.Any() ? statistics.Max(message => message.RpcMaxLatency) : 0;
 
-			var statisticsJson = new JObject
+			var servicesJson = statistics.ToJArray(statistic => statistic.ToJson(json =>
 			{
-				["Time"] = DateTime.Now.AddMinutes(-1),
-				["Services"] = statistics.ToJArray(message => message.ToJson(json =>
+				json.Remove("Time");
+				json.Remove("NodeID");
+				json.Remove("UseL1Cache");
+
+				if (addNodes)
 				{
-					json.Remove("Time");
-					json.Remove("NodeID");
-					json.Remove("UseL1Cache");
-					if (message.ServiceName.IsEquals("APIGateway"))
+					json.Remove("Nodes");
+					var nodeMessages = messages.Where(message => message.ServiceName == statistic.ServiceName);
+					var (nodesJson, _, _, _) = nodeMessages.Aggregate(nodeMessages.GroupBy(message => message.NodeID), false);
+					(nodesJson as JArray).ForEach(nodeJson =>
 					{
-						json.Remove("CacheL1Hit304");
-						json.Remove("CacheL1Hit200");
-						json.Remove("CacheL1Miss");
-						json.Remove("CacheL1HitRatio");
-						json.Remove("CacheL2Hit304");
-						json.Remove("CacheL2Hit200");
-						json.Remove("CacheL2Miss");
-						json.Remove("CacheL2HitRatio");
-					}
-				})),
-				["ThreadPool"] = new JObject
+						nodeJson["NodeID"] = nodeJson["ServiceName"];
+						nodeJson.Remove("ServiceName");
+						nodeJson.Remove("Nodes");
+					});
+					json["Nodes"]= nodesJson;
+				}
+
+				if (statistic.ServiceName.IsEquals("APIGateway"))
 				{
-					["Workers"] = totalWorkers,
-					["MaxWorkers"] = totalMaxWorkers,
-					["Usage"] = workersUsage,
-					["AsyncIO"] = totalAsyncIO,
-					["MaxAsyncIO"] = totalMaxAsyncIO,
-					["NodeMax"] = new JObject
-					{
-						["ID"] = nodeMaxID,
-						["Workers"] = nodeMaxWorkers,
-						["Usage"] = nodeMaxUsage,
-					}
-				},
-				["Cache"] = new JObject
+					var names = new[] { "CacheL1Hit304", "CacheL1Hit200", "CacheL1Miss", "CacheL1HitRatio", "CacheL1MissRatio", "CacheL2Hit304", "CacheL2Hit200", "CacheL2Miss", "CacheL2HitRatio", "CacheL2MissRatio" };
+					names.ForEach(name => json.Remove(name));
+					if (addNodes)
+						json.Get<JArray>("Nodes").ForEach(nodeJson => names.ForEach(name => nodeJson.Remove(name)));
+				}
+			}));
+
+			var threadpoolJson = new JObject
+			{
+				["Workers"] = totalWorkers,
+				["MaxWorkers"] = totalMaxWorkers,
+				["Usage"] = workersUsage,
+				["AsyncIO"] = totalAsyncIO,
+				["MaxAsyncIO"] = totalMaxAsyncIO,
+				["NodeMax"] = new JObject
 				{
-					["Provider"] = cacheProvider,
-					["Status"] = cacheStatus,
-					["Ping"] = new JObject
-					{
-						["Max"] = cacheMaxPing,
-						["Average"] = cacheAveragePing
-					},
-					["Queue"] = new JObject
-					{
-						["Max"] = cacheMaxQueue,
-						["Average"] = cacheAverageQueue,
-						["Total"] = cacheTotalQueue
-					},
-					["Interactive"] = new JObject
-					{
-						["Max"] = cacheMaxInteractiveQueue,
-						["Average"] = cacheAvgInteractiveQueue,
-						["Total"] = cacheTotalInteractiveQueue
-					}
-				},
-				["Router"] = new JObject
-				{
-					["Gate"] = new JObject
-					{
-						["Usage"] = rpcGateUsage,
-						["Current"] = totalCurrentRpcGate,
-						["Available"] = totalAvailableRpcGate,
-						["Max"] = totalMaxRpcGate
-					},
-					["Call"] = new JObject
-					{
-						["Backpressure"] = rpcBackpressure,
-						["CompletionRatio"] = rpcCompletionRatio,
-						["RejectRate"] = rpcRejectRate,
-						["TotalCompleted"] = rpcTotalCompleted,
-						["AverageLatency"] = rpcAverageLatency,
-						["MaxLatency"] = rpcMaxLatency
-					}
+					["ID"] = nodeMaxID,
+					["Workers"] = nodeMaxWorkers,
+					["Usage"] = nodeMaxUsage,
 				}
 			};
 
+			var cacheJson = new JObject
+			{
+				["Provider"] = cacheProvider,
+				["Status"] = cacheStatus,
+				["Ping"] = new JObject
+				{
+					["Max"] = cacheMaxPing,
+					["Average"] = cacheAveragePing
+				},
+				["Queue"] = new JObject
+				{
+					["Max"] = cacheMaxQueue,
+					["Average"] = cacheAverageQueue,
+					["Total"] = cacheTotalQueue
+				},
+				["Interactive"] = new JObject
+				{
+					["Max"] = cacheMaxInteractiveQueue,
+					["Average"] = cacheAvgInteractiveQueue,
+					["Total"] = cacheTotalInteractiveQueue
+				}
+			};
+
+			var routerJson = new JObject
+			{
+				["Gate"] = new JObject
+				{
+					["Usage"] = rpcGateUsage,
+					["Current"] = totalCurrentRpcGate,
+					["Available"] = totalAvailableRpcGate,
+					["Max"] = totalMaxRpcGate
+				},
+				["Call"] = new JObject
+				{
+					["Backpressure"] = rpcBackpressure,
+					["CompletionRatio"] = rpcCompletionRatio,
+					["RejectRate"] = rpcRejectRate,
+					["TotalCompleted"] = rpcTotalCompleted,
+					["AverageLatency"] = rpcAverageLatency,
+					["MaxLatency"] = rpcMaxLatency
+				}
+			};
+
+			return (servicesJson, threadpoolJson, cacheJson, routerJson);
+		}
+
+		public static JObject Aggregate(this IEnumerable<StatisticMessage> messages, Action<JObject> onCompleted = null)
+		{
+			var (servicesJson, threadpoolJson, cacheJson, routerJson) = messages.Aggregate(messages.GroupBy(message => message.ServiceName), true);
+			var statisticsJson = new JObject
+			{
+				["Time"] = DateTime.Now.AddMinutes(-1),
+				["Services"] = servicesJson,
+				["ThreadPool"] = threadpoolJson,
+				["Cache"] = cacheJson,
+				["Router"] = routerJson
+			};
 			onCompleted?.Invoke(statisticsJson);
 			return statisticsJson;
 		}
