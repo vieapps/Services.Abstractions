@@ -13,7 +13,7 @@ namespace net.vieapps.Services
 		/// <param name="formatting"></param>
 		/// <returns></returns>
 		public virtual string ToString(Formatting formatting)
-			=> this.ToJson(null).ToString(formatting);
+			=> this.ToJson(null).AsString(formatting);
 
 		/// <summary>
 		/// Returns a string that represents the current object
