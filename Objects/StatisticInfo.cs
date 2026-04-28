@@ -22,7 +22,7 @@ namespace net.vieapps.Services
 		/// <summary>
 		/// Gets or sets the counter of statistic
 		/// </summary>
-		public int Counters { get; set; } = 0;
+		public long Counters { get; set; } = 0;
 	}
 
 	/// <summary>
@@ -91,6 +91,13 @@ namespace net.vieapps.Services
 		public long RpcRejected;
 		public double RpcAverageLatency;
 		public long RpcMaxLatency;
+
+		public StatisticMessage() { }
+		public StatisticMessage(JToken json, DateTime time)
+		{
+			this.CopyFrom(json);
+			this.Time = time;
+		}
 	}
 
 	public static class StatisticMessageExtension
