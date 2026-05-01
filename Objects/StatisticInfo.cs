@@ -138,7 +138,7 @@ namespace net.vieapps.Services
 			var upstreamServiceMessages = upstreamMessages.GroupBy(message => message.ServiceName);
 			var upstreamNodeMessages = upstreamMessages.GroupBy(message => message.NodeID);
 			var upstreamNumberOfNodes = upstreamMessages.Select(message => message.NodeID).Distinct().Count();
-			var (upstreamServices, upstreamEnvironment, upstreamCache, upstreamRpc) = upstreamMessages.Aggregate(upstreamServiceMessages, upstreamNodeMessages, upstreamNumberOfNodes, true);
+			var (upstreamServices, upstreamEnvironment, upstreamCache, router) = upstreamMessages.Aggregate(upstreamServiceMessages, upstreamNodeMessages, upstreamNumberOfNodes, true);
 
 			var downstreamMessages = messages.Where(message => !message.IsHttp);
 			var downstreamServiceMessages = downstreamMessages.GroupBy(message => message.ServiceName);
@@ -149,11 +149,11 @@ namespace net.vieapps.Services
 			var statisticsJson = new JObject
 			{
 				["Time"] = DateTime.Now.AddMinutes(-1),
+				["Router"] = router,
 				["Upstream"] = new JObject
 				{
 					["Environment"] = upstreamEnvironment,
 					["Cache"] = upstreamCache,
-					["Router"] = upstreamRpc,
 					["Services"] = upstreamServices
 				},
 				["Downstream"] = new JObject
