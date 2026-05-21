@@ -234,7 +234,7 @@ namespace net.vieapps.Services
 			var totalRpcCompleted = statistics.Sum(message => message.RpcCompleted);
 
 			var rpcBackpressure = totalRpcIn - totalRpcOut;
-			var rpcCompletionRatio = totalRpcIn > 0 ? totalRpcOut / totalRpcIn : 1;
+			var rpcCompletionRatio = (totalRpcIn > 0 ? totalRpcOut / totalRpcIn : 1) * 100.0;
 			var rpcRejectRate = totalRpcIn > 0 ? totalRpcRejected / (totalRpcIn * 60) : 0;
 			var rpcWeightedLatency = statistics.Sum(message => message.RpcAverageLatency * message.RpcCompleted);
 			var rpcAverageLatency = totalRpcCompleted > 0 ? rpcWeightedLatency / totalRpcCompleted : 0;
