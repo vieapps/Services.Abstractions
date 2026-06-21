@@ -8,9 +8,9 @@
 		<RootNamespace>net.vieapps.Services</RootNamespace>
 		<AssemblyName>VIEApps.Services.Abstractions</AssemblyName>
 		<AssemblyTitle>VIEApps NGX Service Abstractions</AssemblyTitle>
-		<AssemblyVersion>10.10.2606.1</AssemblyVersion>
-		<FileVersion>10.10.2606.1</FileVersion>
-		<Version>10.10.2606.1</Version>
+		<AssemblyVersion>10.10.2606.2</AssemblyVersion>
+		<FileVersion>10.10.2606.2</FileVersion>
+		<Version>10.10.2606.2</Version>
 		<InformationalVersion>10.10.$([System.DateTime]::Now.Year).$([System.DateTime]::Now.Month).$([System.DateTime]::Now.Day)@$(TargetFramework)#blue.ocean</InformationalVersion>
 		<Title>VIEApps NGX Service Abstractions</Title>
 		<Description>The abstractions for all microservices in the VIEApps NGX</Description>
@@ -30,7 +30,7 @@
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageOutputPath>../../Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>Services' statistics</PackageReleaseNotes>
+		<PackageReleaseNotes>Statistics</PackageReleaseNotes>
 		<PackageProjectUrl>https://vieapps.net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -47,8 +47,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="System.Reactive" Version="6.1.0" />
-		<PackageReference Include="VIEApps.Components.Caching" Version="10.10.2606.1" />
-		<PackageReference Include="VIEApps.Components.Security" Version="10.10.2606.1" />
+		<PackageReference Include="VIEApps.Components.Caching" Version="10.10.2606.2" />
+		<PackageReference Include="VIEApps.Components.Security" Version="10.10.2606.2" />
 		<PackageReference Include="WampSharp.Default.Client" Version="23.8.1" />
 	</ItemGroup>
 
