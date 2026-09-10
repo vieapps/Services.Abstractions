@@ -15,14 +15,19 @@ namespace net.vieapps.Services
 		string NodeID { get; }
 
 		/// <summary>
+		/// Gets the URI
+		/// </summary>
+		string ServiceURI { get; }
+
+		/// <summary>
 		/// Gets the name
 		/// </summary>
 		string ServiceName { get; }
 
 		/// <summary>
-		/// Gets the URI
+		/// Gets the description
 		/// </summary>
-		string ServiceURI { get; }
+		string ServiceDescription { get; }
 
 		/// <summary>
 		/// Gets or sets the logger

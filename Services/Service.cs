@@ -13,14 +13,19 @@ namespace net.vieapps.Services
 	public interface IService : IDisposable, IAsyncDisposable
 	{
 		/// <summary>
+		/// Gets the URI
+		/// </summary>
+		string ServiceURI { get; }
+
+		/// <summary>
 		/// Gets the name
 		/// </summary>
 		string ServiceName { get; }
 
 		/// <summary>
-		/// Gets the URI
+		/// Gets the description
 		/// </summary>
-		string ServiceURI { get; }
+		string ServiceDescription { get; }
 
 		/// <summary>
 		/// Gets the logger
