@@ -30,6 +30,22 @@ namespace net.vieapps.Services
 	}
 
 	/// <summary>
+	/// Presents a system metric information
+	/// </summary>
+	public sealed class MetricInfo : ServiceObjectBase
+	{
+		public string ID { get; set; }
+
+		public int Year { get; set; }
+		public int Month { get; set; }
+		public int Day { get; set; }
+		public int Hour { get; set; }
+		public int Minute { get; set; }
+
+		public JObject Metrics { get; set; }
+	}
+
+	/// <summary>
 	/// Presents a services' statistics
 	/// </summary>
 	public sealed class ServiceStatistics

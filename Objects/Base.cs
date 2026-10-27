@@ -1,5 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using net.vieapps.Components.Utility;
+
 namespace net.vieapps.Services
 {
 	/// <summary>
@@ -21,5 +24,15 @@ namespace net.vieapps.Services
 		/// <returns></returns>
 		public override string ToString()
 			=> this.ToString(Formatting.None);
+
+		/// <summary>
+		/// Converts and save the JSON text into a file
+		/// </summary>
+		/// <param name="filePath"></param>
+		/// <param name="cancellationToken"></param>
+		/// <param name="formatting"></param>
+		/// <returns></returns>
+		public virtual Task SaveToFileAsync(string filePath, CancellationToken cancellationToken = default, Formatting formatting = Formatting.Indented)
+			=> this.ToJson(null).SaveAsTextAsync(filePath, cancellationToken, formatting);
 	}
 }
