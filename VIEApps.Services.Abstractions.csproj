@@ -30,7 +30,7 @@
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageOutputPath>../../Components</PackageOutputPath>
 		<PackageTags>services;microservices;vieapps;vieapps.components;vieapps.services;vieapps.microservices</PackageTags>
-		<PackageReleaseNotes>ReactiveX MCP</PackageReleaseNotes>
+		<PackageReleaseNotes>Logs</PackageReleaseNotes>
 		<PackageProjectUrl>https://vieapps.net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vieapps/Services.Abstractions</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -46,7 +46,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.Reactive" Version="7.0.0" />
 		<PackageReference Include="VIEApps.Components.Caching" Version="10.10.2610.1" />
 		<PackageReference Include="VIEApps.Components.Security" Version="10.10.2610.1" />
 		<PackageReference Include="WampSharp.Default.Client" Version="23.8.1" />
